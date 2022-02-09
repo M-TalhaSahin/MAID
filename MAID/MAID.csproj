@@ -91,6 +91,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cleaning.cs" />
     <Compile Include="dataBase.cs" />
     <Compile Include="PDPSApp.cs">
       <SubType>Form</SubType>
@@ -98,7 +99,7 @@
     <Compile Include="PDPSApp.Designer.cs">
       <DependentUpon>PDPSApp.cs</DependentUpon>
     </Compile>
-    <Compile Include="maid.cs" />
+    <Compile Include="Maid.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="PDPSApp.resx">

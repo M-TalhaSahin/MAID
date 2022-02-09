@@ -37,7 +37,7 @@ namespace MAID
                        );
 
             connection = new NpgsqlConnection(connString);
-            connection.Open();
+            
         }
         public void clearDB()
         {
@@ -48,21 +48,57 @@ namespace MAID
         }
         public void insertMaid(string name, string surname)
         {
+            connection.Open();
             var command = new NpgsqlCommand(String.Format("insert into tblmaid(name, surname) values('{0}', '{1}')", name, surname), connection);
             command.ExecuteNonQuery();
-            Console.Out.WriteLine("\nQuery executed.\n");
+            connection.Close();
         }
         public void removeMaid(int ID)
         {
             var command = new NpgsqlCommand(String.Format("delete from tblmaid where maid_id = {0}", ID), connection);
             command.ExecuteNonQuery();
-            Console.Out.WriteLine("\nQuery executed.\n");
         }
-        public void insertTemizlik(int maidID, odaTipi odaTipi)
+        public List<Maid> selectMaidList()
         {
-            var command = new NpgsqlCommand(String.Format("insert into tbltemizlikkayit(maid_id, odatipi, date) values({0}, CAST({1} AS bit), NOW())", maidID, (int)odaTipi), connection);
+            List<Maid> maids = new List<Maid>();
+            using (var command = new NpgsqlCommand("select maid_id, name, surname from tblmaid", connection))
+            {
+                connection.Open();
+                NpgsqlDataReader dr = command.ExecuteReader();
+                while (dr.Read())
+                {
+                    maids.Add(new Maid(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString()));
+                }
+                connection.Close();
+            }
+            return maids;
+        }
+        public void insertTemizlik(int maidID, odaTipi odaTipi, string roomNumer)
+        {
+            connection.Open();
+            var command = new NpgsqlCommand(String.Format("insert into tbltemizlikkayit(maid_id, odatipi, date, odano) values({0}, CAST({1} AS bit), NOW(), {2})", maidID, (int)odaTipi, roomNumer), connection);
             command.ExecuteNonQuery();
-            Console.Out.WriteLine("\nQuery executed.\n");
+            connection.Close();
+        }
+        public List<Cleaning> selectCleaningList()
+        {
+            List<Cleaning> cleanings = new List<Cleaning>();
+            using (var command = new NpgsqlCommand("select m.maid_id, m.name, m.surname, t.odatipi, t.odano, t.date from tbltemizlikkayit as t left join tblmaid as m on t.maid_id = m.maid_id", connection))
+            {
+                connection.Open();
+                NpgsqlDataReader dr = command.ExecuteReader();
+                while (dr.Read())
+                {
+                    dataBase.odaTipi type;
+                    if(!Convert.ToBoolean(dr[3])) type = dataBase.odaTipi.cikis;
+                    else type = dataBase.odaTipi.bakim;
+
+                    cleanings.Add(new Cleaning(new Maid(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString()),
+                        type, dr[4].ToString(), dr[5].ToString()));
+                }
+                connection.Close();
+            }
+            return cleanings;
         }
     }
 }

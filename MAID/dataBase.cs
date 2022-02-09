@@ -9,8 +9,6 @@ namespace MAID
 {
     class dataBase
     {
-        // Obtain connection string information from the portal
-        //
         private static string Host = "localhost";
         private static string User = "postgres";
         private static string DBname = "PDPS";

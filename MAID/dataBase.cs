@@ -94,7 +94,7 @@ namespace MAID
                     else type = dataBase.odaTipi.bakim;
 
                     cleanings.Add(new Cleaning(new Maid(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString()),
-                        type, dr[4].ToString(), dr[5].ToString()));
+                        type, dr[4].ToString(), dr[5].ToString().Split(' ')[0]));
                 }
                 connection.Close();
             }

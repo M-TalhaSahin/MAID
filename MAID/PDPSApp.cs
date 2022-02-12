@@ -20,21 +20,17 @@ namespace MAID
 
         private void PDPSApp_Load(object sender, EventArgs e)
         {
-            
-            //dbconnection.clearDB();
-            //dbconnection.insertMaid("m1", "ms1");
-            //dbconnection.insertTemizlik(2, dataBase.odaTipi.cikis);
-            //dbconnection.removeMaid(1);
-            //Environment.Exit(0);
+            dbconnection.clearDB();
         }
-
+        
         private void btnListMaids_Click(object sender, EventArgs e)
         {
             List<Maid> maidList = dbconnection.selectMaidList();
             lwMaid.Items.Clear();
             for (int i = 0; i < maidList.Count(); i++)
             {
-                string[] row = { maidList[i].Id.ToString(), maidList[i].Name, maidList[i].Surname };
+                string[] row = { maidList[i].Id.ToString(), maidList[i].Name, maidList[i].Surname, 
+                    maidList[i].Rating.ToString(), maidList[i].RoomsCleaned.ToString() };
                 var satir = new ListViewItem(row);
                 lwMaid.Items.Add(satir);
             }
@@ -75,7 +71,7 @@ namespace MAID
             for (int i = 0; i < cleanings.Count(); i++)
             {
                 string[] row = { cleanings[i].Maid.Id.ToString(), cleanings[i].Maid.Name, cleanings[i].Maid.Surname,
-                cleanings[i].Type.ToString(), cleanings[i].RoomNumber[0].ToString(), cleanings[i].RoomNumber, cleanings[i].Date};
+                cleanings[i].Type.ToString(), cleanings[i].RoomNumber[0].ToString(), cleanings[i].RoomNumber, cleanings[i].Date, cleanings[i].Rateing.ToString()};
                 var satir = new ListViewItem(row);
                 lwCleaning.Items.Add(satir);
             }
@@ -87,10 +83,15 @@ namespace MAID
             dataBase.odaTipi type;
             if (rBCaring.Checked) type = dataBase.odaTipi.bakim;
             else type = dataBase.odaTipi.cikis;
-            dbconnection.insertTemizlik(id, type, cbxRoom.SelectedItem.ToString());
+            dbconnection.insertTemizlik(id, type, cbxRoom.SelectedItem.ToString(), Convert.ToInt32(cbxRate.SelectedItem.ToString()));
             cbxRoom.Enabled = false;
             cbxRoom.Items.Clear();
             cbxMaid.Text = "";
+        }
+
+        private void lwMaid_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

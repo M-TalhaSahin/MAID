@@ -21,6 +21,8 @@ namespace MAID
         private void PDPSApp_Load(object sender, EventArgs e)
         {
             dbconnection.clearDB();
+
+            mainTabControl_SelectedIndexChanged(sender, e);
         }
         
         private void btnListMaids_Click(object sender, EventArgs e)
@@ -41,6 +43,7 @@ namespace MAID
             dbconnection.insertMaid(txtMaidName.Text, txtMaidSurname.Text);
             txtMaidName.Clear();
             txtMaidSurname.Clear();
+            btnListMaids_Click(sender, e);
         }
 
         private void cbxMaid_DropDown(object sender, EventArgs e)
@@ -81,17 +84,21 @@ namespace MAID
         {
             int id = Convert.ToInt32(cbxMaid.SelectedItem.ToString().Split('-')[0]);
             dataBase.odaTipi type;
-            if (rBCaring.Checked) type = dataBase.odaTipi.bakim;
-            else type = dataBase.odaTipi.cikis;
+            if (rBCaring.Checked) { type = dataBase.odaTipi.bakim; rBCaring.Checked = false; }
+            else { type = dataBase.odaTipi.cikis; rbCheckout.Checked = false; }
             dbconnection.insertTemizlik(id, type, cbxRoom.SelectedItem.ToString(), Convert.ToInt32(cbxRate.SelectedItem.ToString()));
+            cbxRoom.Text = "";
+            cbxFloor.Text = "";
+            cbxRate.Text = "";
             cbxRoom.Enabled = false;
-            cbxRoom.Items.Clear();
             cbxMaid.Text = "";
+            btnListCln_Click(sender, e);
         }
 
-        private void lwMaid_SelectedIndexChanged(object sender, EventArgs e)
+        private void mainTabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (mainTabControl.SelectedIndex == 0) btnListMaids_Click(sender, e);
+            else btnListCln_Click(sender, e);
         }
     }
 }

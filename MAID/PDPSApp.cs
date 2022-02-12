@@ -20,7 +20,7 @@ namespace MAID
 
         private void PDPSApp_Load(object sender, EventArgs e)
         {
-            dbconnection.clearDB();
+            //dbconnection.clearDB();
 
             mainTabControl_SelectedIndexChanged(sender, e);
         }

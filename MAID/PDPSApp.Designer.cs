@@ -31,6 +31,10 @@ namespace MAID
         {
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.tabMaid = new System.Windows.Forms.TabPage();
+            this.gbMaidRemove = new System.Windows.Forms.GroupBox();
+            this.cbxMaidRemove = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnMaidRemove = new System.Windows.Forms.Button();
             this.btnListMaids = new System.Windows.Forms.Button();
             this.txtOutput = new System.Windows.Forms.TextBox();
             this.gBAddMaid = new System.Windows.Forms.GroupBox();
@@ -69,8 +73,10 @@ namespace MAID
             this.cbxMaid = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnCleaningAdd = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.mainTabControl.SuspendLayout();
             this.tabMaid.SuspendLayout();
+            this.gbMaidRemove.SuspendLayout();
             this.gBAddMaid.SuspendLayout();
             this.tabCleaning.SuspendLayout();
             this.gBCleaning.SuspendLayout();
@@ -92,10 +98,13 @@ namespace MAID
             // 
             // tabMaid
             // 
+            this.tabMaid.BackColor = System.Drawing.Color.Tan;
+            this.tabMaid.Controls.Add(this.gbMaidRemove);
             this.tabMaid.Controls.Add(this.btnListMaids);
             this.tabMaid.Controls.Add(this.txtOutput);
             this.tabMaid.Controls.Add(this.gBAddMaid);
             this.tabMaid.Controls.Add(this.lwMaid);
+            this.tabMaid.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tabMaid.Location = new System.Drawing.Point(4, 25);
             this.tabMaid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabMaid.Name = "tabMaid";
@@ -103,7 +112,49 @@ namespace MAID
             this.tabMaid.Size = new System.Drawing.Size(1456, 650);
             this.tabMaid.TabIndex = 0;
             this.tabMaid.Text = "Maid";
-            this.tabMaid.UseVisualStyleBackColor = true;
+            // 
+            // gbMaidRemove
+            // 
+            this.gbMaidRemove.Controls.Add(this.cbxMaidRemove);
+            this.gbMaidRemove.Controls.Add(this.label8);
+            this.gbMaidRemove.Controls.Add(this.btnMaidRemove);
+            this.gbMaidRemove.Location = new System.Drawing.Point(44, 253);
+            this.gbMaidRemove.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbMaidRemove.Name = "gbMaidRemove";
+            this.gbMaidRemove.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbMaidRemove.Size = new System.Drawing.Size(473, 158);
+            this.gbMaidRemove.TabIndex = 8;
+            this.gbMaidRemove.TabStop = false;
+            this.gbMaidRemove.Text = "Remove Maid";
+            // 
+            // cbxMaidRemove
+            // 
+            this.cbxMaidRemove.FormattingEnabled = true;
+            this.cbxMaidRemove.Location = new System.Drawing.Point(63, 59);
+            this.cbxMaidRemove.Name = "cbxMaidRemove";
+            this.cbxMaidRemove.Size = new System.Drawing.Size(253, 24);
+            this.cbxMaidRemove.TabIndex = 7;
+            this.cbxMaidRemove.DropDown += new System.EventHandler(this.cbxMaidRemove_DropDown);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(60, 39);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(38, 17);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Maid";
+            // 
+            // btnMaidRemove
+            // 
+            this.btnMaidRemove.Location = new System.Drawing.Point(347, 111);
+            this.btnMaidRemove.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMaidRemove.Name = "btnMaidRemove";
+            this.btnMaidRemove.Size = new System.Drawing.Size(75, 26);
+            this.btnMaidRemove.TabIndex = 4;
+            this.btnMaidRemove.Text = "Remove";
+            this.btnMaidRemove.UseVisualStyleBackColor = true;
+            this.btnMaidRemove.Click += new System.EventHandler(this.btnMaidRemove_Click);
             // 
             // btnListMaids
             // 
@@ -118,11 +169,11 @@ namespace MAID
             // 
             // txtOutput
             // 
-            this.txtOutput.Location = new System.Drawing.Point(44, 300);
+            this.txtOutput.Location = new System.Drawing.Point(44, 487);
             this.txtOutput.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtOutput.Multiline = true;
             this.txtOutput.Name = "txtOutput";
-            this.txtOutput.Size = new System.Drawing.Size(473, 320);
+            this.txtOutput.Size = new System.Drawing.Size(473, 133);
             this.txtOutput.TabIndex = 8;
             // 
             // gBAddMaid
@@ -172,7 +223,7 @@ namespace MAID
             this.btnAddMaid.Location = new System.Drawing.Point(347, 126);
             this.btnAddMaid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddMaid.Name = "btnAddMaid";
-            this.btnAddMaid.Size = new System.Drawing.Size(75, 23);
+            this.btnAddMaid.Size = new System.Drawing.Size(75, 25);
             this.btnAddMaid.TabIndex = 4;
             this.btnAddMaid.Text = "Add";
             this.btnAddMaid.UseVisualStyleBackColor = true;
@@ -231,9 +282,11 @@ namespace MAID
             // 
             // tabCleaning
             // 
+            this.tabCleaning.BackColor = System.Drawing.Color.Tan;
             this.tabCleaning.Controls.Add(this.lwCleaning);
             this.tabCleaning.Controls.Add(this.btnListCln);
             this.tabCleaning.Controls.Add(this.gBCleaning);
+            this.tabCleaning.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tabCleaning.Location = new System.Drawing.Point(4, 25);
             this.tabCleaning.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabCleaning.Name = "tabCleaning";
@@ -241,7 +294,6 @@ namespace MAID
             this.tabCleaning.Size = new System.Drawing.Size(1456, 650);
             this.tabCleaning.TabIndex = 1;
             this.tabCleaning.Text = "Cleaning";
-            this.tabCleaning.UseVisualStyleBackColor = true;
             // 
             // lwCleaning
             // 
@@ -317,6 +369,7 @@ namespace MAID
             // 
             // gBCleaning
             // 
+            this.gBCleaning.Controls.Add(this.textBox1);
             this.gBCleaning.Controls.Add(this.cbxRate);
             this.gBCleaning.Controls.Add(this.label6);
             this.gBCleaning.Controls.Add(this.gBCleaningRB);
@@ -331,7 +384,7 @@ namespace MAID
             this.gBCleaning.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gBCleaning.Name = "gBCleaning";
             this.gBCleaning.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gBCleaning.Size = new System.Drawing.Size(473, 283);
+            this.gBCleaning.Size = new System.Drawing.Size(473, 444);
             this.gBCleaning.TabIndex = 7;
             this.gBCleaning.TabStop = false;
             this.gBCleaning.Text = "Insert Cleaning";
@@ -470,12 +523,21 @@ namespace MAID
             this.btnCleaningAdd.UseVisualStyleBackColor = true;
             this.btnCleaningAdd.Click += new System.EventHandler(this.btnCleaningAdd_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(63, 290);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(341, 103);
+            this.textBox1.TabIndex = 14;
+            // 
             // PDPSAppl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1488, 704);
             this.Controls.Add(this.mainTabControl);
+            this.ForeColor = System.Drawing.Color.Coral;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "PDPSAppl";
             this.Text = "PDPS";
@@ -483,6 +545,8 @@ namespace MAID
             this.mainTabControl.ResumeLayout(false);
             this.tabMaid.ResumeLayout(false);
             this.tabMaid.PerformLayout();
+            this.gbMaidRemove.ResumeLayout(false);
+            this.gbMaidRemove.PerformLayout();
             this.gBAddMaid.ResumeLayout(false);
             this.gBAddMaid.PerformLayout();
             this.tabCleaning.ResumeLayout(false);
@@ -536,6 +600,11 @@ namespace MAID
         private System.Windows.Forms.ColumnHeader lwmClnRate;
         private System.Windows.Forms.ColumnHeader lwmRatingAvg;
         private System.Windows.Forms.ColumnHeader lwmRoomsCleaned;
+        private System.Windows.Forms.GroupBox gbMaidRemove;
+        private System.Windows.Forms.ComboBox cbxMaidRemove;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnMaidRemove;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

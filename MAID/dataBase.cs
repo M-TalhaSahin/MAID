@@ -55,8 +55,10 @@ namespace MAID
         }
         public void removeMaid(int ID)
         {
+            connection.Open();
             var command = new NpgsqlCommand(String.Format("delete from tblmaid where maid_id = {0}", ID), connection);
             command.ExecuteNonQuery();
+            connection.Close();
         }
         public List<Maid> selectMaidList()
         {

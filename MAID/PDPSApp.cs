@@ -100,5 +100,22 @@ namespace MAID
             if (mainTabControl.SelectedIndex == 0) btnListMaids_Click(sender, e);
             else btnListCln_Click(sender, e);
         }
+
+        private void cbxMaidRemove_DropDown(object sender, EventArgs e)
+        {
+            List<Maid> maidList = dbconnection.selectMaidList();
+            cbxMaidRemove.Items.Clear();
+            foreach (Maid maid in maidList)
+            {
+                cbxMaidRemove.Items.Add(maid.Id.ToString() + " - " + maid.Name);
+            }
+        }
+
+        private void btnMaidRemove_Click(object sender, EventArgs e)
+        {
+            dbconnection.removeMaid(Convert.ToInt32(cbxMaidRemove.SelectedItem.ToString().Split('-')[0]));
+            cbxMaidRemove.Text = "";
+            btnListMaids_Click(sender, e);
+        }
     }
 }

@@ -49,7 +49,12 @@ namespace MAID
             this.lwmSurname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lwmRatingAvg = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lwmRoomsCleaned = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lwmSalary = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabCleaning = new System.Windows.Forms.TabPage();
+            this.txtSearch = new System.Windows.Forms.MaskedTextBox();
+            this.cbxSearch = new System.Windows.Forms.ComboBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.dateSearch = new System.Windows.Forms.DateTimePicker();
             this.lwCleaning = new System.Windows.Forms.ListView();
             this.lwmClnID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lwmClnName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -61,6 +66,7 @@ namespace MAID
             this.lwmClnRate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnListCln = new System.Windows.Forms.Button();
             this.gBCleaning = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.cbxRate = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.gBCleaningRB = new System.Windows.Forms.GroupBox();
@@ -73,7 +79,24 @@ namespace MAID
             this.cbxMaid = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnCleaningAdd = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tabCleaningHistory = new System.Windows.Forms.TabPage();
+            this.btnListMaidHistory = new System.Windows.Forms.Button();
+            this.lwMaidHistory = new System.Windows.Forms.ListView();
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnListCleaningHistory = new System.Windows.Forms.Button();
+            this.lwCleaningHistory = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.mainTabControl.SuspendLayout();
             this.tabMaid.SuspendLayout();
             this.gbMaidRemove.SuspendLayout();
@@ -81,6 +104,7 @@ namespace MAID
             this.tabCleaning.SuspendLayout();
             this.gBCleaning.SuspendLayout();
             this.gBCleaningRB.SuspendLayout();
+            this.tabCleaningHistory.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainTabControl
@@ -88,11 +112,12 @@ namespace MAID
             this.mainTabControl.AccessibleName = "";
             this.mainTabControl.Controls.Add(this.tabMaid);
             this.mainTabControl.Controls.Add(this.tabCleaning);
-            this.mainTabControl.Location = new System.Drawing.Point(12, 12);
-            this.mainTabControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.mainTabControl.Controls.Add(this.tabCleaningHistory);
+            this.mainTabControl.Location = new System.Drawing.Point(9, 10);
+            this.mainTabControl.Margin = new System.Windows.Forms.Padding(2);
             this.mainTabControl.Name = "mainTabControl";
             this.mainTabControl.SelectedIndex = 0;
-            this.mainTabControl.Size = new System.Drawing.Size(1464, 679);
+            this.mainTabControl.Size = new System.Drawing.Size(1098, 552);
             this.mainTabControl.TabIndex = 0;
             this.mainTabControl.SelectedIndexChanged += new System.EventHandler(this.mainTabControl_SelectedIndexChanged);
             // 
@@ -105,11 +130,11 @@ namespace MAID
             this.tabMaid.Controls.Add(this.gBAddMaid);
             this.tabMaid.Controls.Add(this.lwMaid);
             this.tabMaid.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tabMaid.Location = new System.Drawing.Point(4, 25);
-            this.tabMaid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabMaid.Location = new System.Drawing.Point(4, 22);
+            this.tabMaid.Margin = new System.Windows.Forms.Padding(2);
             this.tabMaid.Name = "tabMaid";
-            this.tabMaid.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabMaid.Size = new System.Drawing.Size(1456, 650);
+            this.tabMaid.Padding = new System.Windows.Forms.Padding(2);
+            this.tabMaid.Size = new System.Drawing.Size(1090, 526);
             this.tabMaid.TabIndex = 0;
             this.tabMaid.Text = "Maid";
             // 
@@ -118,11 +143,11 @@ namespace MAID
             this.gbMaidRemove.Controls.Add(this.cbxMaidRemove);
             this.gbMaidRemove.Controls.Add(this.label8);
             this.gbMaidRemove.Controls.Add(this.btnMaidRemove);
-            this.gbMaidRemove.Location = new System.Drawing.Point(44, 253);
-            this.gbMaidRemove.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbMaidRemove.Location = new System.Drawing.Point(33, 206);
+            this.gbMaidRemove.Margin = new System.Windows.Forms.Padding(2);
             this.gbMaidRemove.Name = "gbMaidRemove";
-            this.gbMaidRemove.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gbMaidRemove.Size = new System.Drawing.Size(473, 158);
+            this.gbMaidRemove.Padding = new System.Windows.Forms.Padding(2);
+            this.gbMaidRemove.Size = new System.Drawing.Size(355, 128);
             this.gbMaidRemove.TabIndex = 8;
             this.gbMaidRemove.TabStop = false;
             this.gbMaidRemove.Text = "Remove Maid";
@@ -130,27 +155,29 @@ namespace MAID
             // cbxMaidRemove
             // 
             this.cbxMaidRemove.FormattingEnabled = true;
-            this.cbxMaidRemove.Location = new System.Drawing.Point(63, 59);
+            this.cbxMaidRemove.Location = new System.Drawing.Point(47, 48);
+            this.cbxMaidRemove.Margin = new System.Windows.Forms.Padding(2);
             this.cbxMaidRemove.Name = "cbxMaidRemove";
-            this.cbxMaidRemove.Size = new System.Drawing.Size(253, 24);
+            this.cbxMaidRemove.Size = new System.Drawing.Size(191, 21);
             this.cbxMaidRemove.TabIndex = 7;
             this.cbxMaidRemove.DropDown += new System.EventHandler(this.cbxMaidRemove_DropDown);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(60, 39);
+            this.label8.Location = new System.Drawing.Point(45, 32);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(38, 17);
+            this.label8.Size = new System.Drawing.Size(30, 13);
             this.label8.TabIndex = 6;
             this.label8.Text = "Maid";
             // 
             // btnMaidRemove
             // 
-            this.btnMaidRemove.Location = new System.Drawing.Point(347, 111);
-            this.btnMaidRemove.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMaidRemove.Location = new System.Drawing.Point(260, 90);
+            this.btnMaidRemove.Margin = new System.Windows.Forms.Padding(2);
             this.btnMaidRemove.Name = "btnMaidRemove";
-            this.btnMaidRemove.Size = new System.Drawing.Size(75, 26);
+            this.btnMaidRemove.Size = new System.Drawing.Size(56, 21);
             this.btnMaidRemove.TabIndex = 4;
             this.btnMaidRemove.Text = "Remove";
             this.btnMaidRemove.UseVisualStyleBackColor = true;
@@ -158,10 +185,10 @@ namespace MAID
             // 
             // btnListMaids
             // 
-            this.btnListMaids.Location = new System.Drawing.Point(624, 26);
-            this.btnListMaids.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnListMaids.Location = new System.Drawing.Point(468, 21);
+            this.btnListMaids.Margin = new System.Windows.Forms.Padding(2);
             this.btnListMaids.Name = "btnListMaids";
-            this.btnListMaids.Size = new System.Drawing.Size(75, 23);
+            this.btnListMaids.Size = new System.Drawing.Size(56, 19);
             this.btnListMaids.TabIndex = 8;
             this.btnListMaids.Text = "List";
             this.btnListMaids.UseVisualStyleBackColor = true;
@@ -169,11 +196,11 @@ namespace MAID
             // 
             // txtOutput
             // 
-            this.txtOutput.Location = new System.Drawing.Point(44, 487);
-            this.txtOutput.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtOutput.Location = new System.Drawing.Point(33, 396);
+            this.txtOutput.Margin = new System.Windows.Forms.Padding(2);
             this.txtOutput.Multiline = true;
             this.txtOutput.Name = "txtOutput";
-            this.txtOutput.Size = new System.Drawing.Size(473, 133);
+            this.txtOutput.Size = new System.Drawing.Size(356, 109);
             this.txtOutput.TabIndex = 8;
             // 
             // gBAddMaid
@@ -183,11 +210,11 @@ namespace MAID
             this.gBAddMaid.Controls.Add(this.txtMaidName);
             this.gBAddMaid.Controls.Add(this.btnAddMaid);
             this.gBAddMaid.Controls.Add(this.txtMaidSurname);
-            this.gBAddMaid.Location = new System.Drawing.Point(44, 55);
-            this.gBAddMaid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gBAddMaid.Location = new System.Drawing.Point(33, 45);
+            this.gBAddMaid.Margin = new System.Windows.Forms.Padding(2);
             this.gBAddMaid.Name = "gBAddMaid";
-            this.gBAddMaid.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gBAddMaid.Size = new System.Drawing.Size(473, 180);
+            this.gBAddMaid.Padding = new System.Windows.Forms.Padding(2);
+            this.gBAddMaid.Size = new System.Drawing.Size(355, 146);
             this.gBAddMaid.TabIndex = 5;
             this.gBAddMaid.TabStop = false;
             this.gBAddMaid.Text = "Insert Maid";
@@ -195,35 +222,37 @@ namespace MAID
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(259, 39);
+            this.label2.Location = new System.Drawing.Point(194, 32);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 17);
+            this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 7;
             this.label2.Text = "Surame";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(60, 39);
+            this.label1.Location = new System.Drawing.Point(45, 32);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 17);
+            this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "Name";
             // 
             // txtMaidName
             // 
-            this.txtMaidName.Location = new System.Drawing.Point(63, 60);
-            this.txtMaidName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtMaidName.Location = new System.Drawing.Point(47, 49);
+            this.txtMaidName.Margin = new System.Windows.Forms.Padding(2);
             this.txtMaidName.Name = "txtMaidName";
-            this.txtMaidName.Size = new System.Drawing.Size(159, 22);
+            this.txtMaidName.Size = new System.Drawing.Size(120, 20);
             this.txtMaidName.TabIndex = 0;
             // 
             // btnAddMaid
             // 
-            this.btnAddMaid.Location = new System.Drawing.Point(347, 126);
-            this.btnAddMaid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAddMaid.Location = new System.Drawing.Point(260, 102);
+            this.btnAddMaid.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddMaid.Name = "btnAddMaid";
-            this.btnAddMaid.Size = new System.Drawing.Size(75, 25);
+            this.btnAddMaid.Size = new System.Drawing.Size(56, 20);
             this.btnAddMaid.TabIndex = 4;
             this.btnAddMaid.Text = "Add";
             this.btnAddMaid.UseVisualStyleBackColor = true;
@@ -231,10 +260,10 @@ namespace MAID
             // 
             // txtMaidSurname
             // 
-            this.txtMaidSurname.Location = new System.Drawing.Point(261, 60);
-            this.txtMaidSurname.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtMaidSurname.Location = new System.Drawing.Point(196, 49);
+            this.txtMaidSurname.Margin = new System.Windows.Forms.Padding(2);
             this.txtMaidSurname.Name = "txtMaidSurname";
-            this.txtMaidSurname.Size = new System.Drawing.Size(159, 22);
+            this.txtMaidSurname.Size = new System.Drawing.Size(120, 20);
             this.txtMaidSurname.TabIndex = 1;
             // 
             // lwMaid
@@ -245,14 +274,15 @@ namespace MAID
             this.lwmName,
             this.lwmSurname,
             this.lwmRatingAvg,
-            this.lwmRoomsCleaned});
+            this.lwmRoomsCleaned,
+            this.lwmSalary});
             this.lwMaid.FullRowSelect = true;
             this.lwMaid.GridLines = true;
             this.lwMaid.HideSelection = false;
-            this.lwMaid.Location = new System.Drawing.Point(624, 55);
-            this.lwMaid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lwMaid.Location = new System.Drawing.Point(468, 45);
+            this.lwMaid.Margin = new System.Windows.Forms.Padding(2);
             this.lwMaid.Name = "lwMaid";
-            this.lwMaid.Size = new System.Drawing.Size(801, 565);
+            this.lwMaid.Size = new System.Drawing.Size(602, 460);
             this.lwMaid.TabIndex = 3;
             this.lwMaid.UseCompatibleStateImageBehavior = false;
             this.lwMaid.View = System.Windows.Forms.View.Details;
@@ -280,20 +310,69 @@ namespace MAID
             this.lwmRoomsCleaned.Text = "Rooms Cleaned";
             this.lwmRoomsCleaned.Width = 99;
             // 
+            // lwmSalary
+            // 
+            this.lwmSalary.Text = "Salary";
+            this.lwmSalary.Width = 99;
+            // 
             // tabCleaning
             // 
             this.tabCleaning.BackColor = System.Drawing.Color.Tan;
+            this.tabCleaning.Controls.Add(this.txtSearch);
+            this.tabCleaning.Controls.Add(this.cbxSearch);
+            this.tabCleaning.Controls.Add(this.btnSearch);
+            this.tabCleaning.Controls.Add(this.dateSearch);
             this.tabCleaning.Controls.Add(this.lwCleaning);
             this.tabCleaning.Controls.Add(this.btnListCln);
             this.tabCleaning.Controls.Add(this.gBCleaning);
             this.tabCleaning.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tabCleaning.Location = new System.Drawing.Point(4, 25);
-            this.tabCleaning.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabCleaning.Location = new System.Drawing.Point(4, 22);
+            this.tabCleaning.Margin = new System.Windows.Forms.Padding(2);
             this.tabCleaning.Name = "tabCleaning";
-            this.tabCleaning.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabCleaning.Size = new System.Drawing.Size(1456, 650);
+            this.tabCleaning.Padding = new System.Windows.Forms.Padding(2);
+            this.tabCleaning.Size = new System.Drawing.Size(1090, 526);
             this.tabCleaning.TabIndex = 1;
             this.tabCleaning.Text = "Cleaning";
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(781, 12);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(100, 20);
+            this.txtSearch.TabIndex = 12;
+            this.txtSearch.Visible = false;
+            // 
+            // cbxSearch
+            // 
+            this.cbxSearch.FormattingEnabled = true;
+            this.cbxSearch.Items.AddRange(new object[] {
+            "ID",
+            "Name Surname",
+            "Date"});
+            this.cbxSearch.Location = new System.Drawing.Point(522, 11);
+            this.cbxSearch.Name = "cbxSearch";
+            this.cbxSearch.Size = new System.Drawing.Size(121, 21);
+            this.cbxSearch.TabIndex = 15;
+            this.cbxSearch.SelectedIndexChanged += new System.EventHandler(this.cbxSearch_SelectedIndexChanged);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(987, 8);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 14;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // dateSearch
+            // 
+            this.dateSearch.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateSearch.Location = new System.Drawing.Point(781, 11);
+            this.dateSearch.Name = "dateSearch";
+            this.dateSearch.Size = new System.Drawing.Size(200, 20);
+            this.dateSearch.TabIndex = 13;
+            this.dateSearch.Visible = false;
             // 
             // lwCleaning
             // 
@@ -310,10 +389,10 @@ namespace MAID
             this.lwCleaning.FullRowSelect = true;
             this.lwCleaning.GridLines = true;
             this.lwCleaning.HideSelection = false;
-            this.lwCleaning.Location = new System.Drawing.Point(617, 58);
-            this.lwCleaning.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lwCleaning.Location = new System.Drawing.Point(463, 47);
+            this.lwCleaning.Margin = new System.Windows.Forms.Padding(2);
             this.lwCleaning.Name = "lwCleaning";
-            this.lwCleaning.Size = new System.Drawing.Size(801, 565);
+            this.lwCleaning.Size = new System.Drawing.Size(602, 460);
             this.lwCleaning.TabIndex = 10;
             this.lwCleaning.UseCompatibleStateImageBehavior = false;
             this.lwCleaning.View = System.Windows.Forms.View.Details;
@@ -358,10 +437,10 @@ namespace MAID
             // 
             // btnListCln
             // 
-            this.btnListCln.Location = new System.Drawing.Point(617, 14);
-            this.btnListCln.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnListCln.Location = new System.Drawing.Point(463, 11);
+            this.btnListCln.Margin = new System.Windows.Forms.Padding(2);
             this.btnListCln.Name = "btnListCln";
-            this.btnListCln.Size = new System.Drawing.Size(75, 23);
+            this.btnListCln.Size = new System.Drawing.Size(56, 19);
             this.btnListCln.TabIndex = 9;
             this.btnListCln.Text = "List";
             this.btnListCln.UseVisualStyleBackColor = true;
@@ -380,14 +459,23 @@ namespace MAID
             this.gBCleaning.Controls.Add(this.cbxMaid);
             this.gBCleaning.Controls.Add(this.label4);
             this.gBCleaning.Controls.Add(this.btnCleaningAdd);
-            this.gBCleaning.Location = new System.Drawing.Point(37, 43);
-            this.gBCleaning.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gBCleaning.Location = new System.Drawing.Point(28, 35);
+            this.gBCleaning.Margin = new System.Windows.Forms.Padding(2);
             this.gBCleaning.Name = "gBCleaning";
-            this.gBCleaning.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gBCleaning.Size = new System.Drawing.Size(473, 444);
+            this.gBCleaning.Padding = new System.Windows.Forms.Padding(2);
+            this.gBCleaning.Size = new System.Drawing.Size(355, 361);
             this.gBCleaning.TabIndex = 7;
             this.gBCleaning.TabStop = false;
             this.gBCleaning.Text = "Insert Cleaning";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(47, 236);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(257, 84);
+            this.textBox1.TabIndex = 14;
             // 
             // cbxRate
             // 
@@ -398,18 +486,19 @@ namespace MAID
             "3",
             "4",
             "5"});
-            this.cbxRate.Location = new System.Drawing.Point(160, 231);
-            this.cbxRate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbxRate.Location = new System.Drawing.Point(120, 188);
+            this.cbxRate.Margin = new System.Windows.Forms.Padding(2);
             this.cbxRate.Name = "cbxRate";
-            this.cbxRate.Size = new System.Drawing.Size(52, 24);
+            this.cbxRate.Size = new System.Drawing.Size(40, 21);
             this.cbxRate.TabIndex = 13;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(157, 210);
+            this.label6.Location = new System.Drawing.Point(118, 171);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(38, 17);
+            this.label6.Size = new System.Drawing.Size(30, 13);
             this.label6.TabIndex = 12;
             this.label6.Text = "Rate";
             // 
@@ -417,21 +506,21 @@ namespace MAID
             // 
             this.gBCleaningRB.Controls.Add(this.rBCaring);
             this.gBCleaningRB.Controls.Add(this.rbCheckout);
-            this.gBCleaningRB.Location = new System.Drawing.Point(309, 75);
-            this.gBCleaningRB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gBCleaningRB.Location = new System.Drawing.Point(232, 61);
+            this.gBCleaningRB.Margin = new System.Windows.Forms.Padding(2);
             this.gBCleaningRB.Name = "gBCleaningRB";
-            this.gBCleaningRB.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gBCleaningRB.Size = new System.Drawing.Size(120, 91);
+            this.gBCleaningRB.Padding = new System.Windows.Forms.Padding(2);
+            this.gBCleaningRB.Size = new System.Drawing.Size(90, 74);
             this.gBCleaningRB.TabIndex = 8;
             this.gBCleaningRB.TabStop = false;
             // 
             // rBCaring
             // 
             this.rBCaring.AutoSize = true;
-            this.rBCaring.Location = new System.Drawing.Point(16, 57);
-            this.rBCaring.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rBCaring.Location = new System.Drawing.Point(12, 46);
+            this.rBCaring.Margin = new System.Windows.Forms.Padding(2);
             this.rBCaring.Name = "rBCaring";
-            this.rBCaring.Size = new System.Drawing.Size(70, 21);
+            this.rBCaring.Size = new System.Drawing.Size(55, 17);
             this.rBCaring.TabIndex = 15;
             this.rBCaring.TabStop = true;
             this.rBCaring.Text = "Caring";
@@ -440,10 +529,10 @@ namespace MAID
             // rbCheckout
             // 
             this.rbCheckout.AutoSize = true;
-            this.rbCheckout.Location = new System.Drawing.Point(16, 23);
-            this.rbCheckout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rbCheckout.Location = new System.Drawing.Point(12, 19);
+            this.rbCheckout.Margin = new System.Windows.Forms.Padding(2);
             this.rbCheckout.Name = "rbCheckout";
-            this.rbCheckout.Size = new System.Drawing.Size(88, 21);
+            this.rbCheckout.Size = new System.Drawing.Size(71, 17);
             this.rbCheckout.TabIndex = 14;
             this.rbCheckout.TabStop = true;
             this.rbCheckout.Text = "Checkout";
@@ -453,10 +542,10 @@ namespace MAID
             // 
             this.cbxRoom.Enabled = false;
             this.cbxRoom.FormattingEnabled = true;
-            this.cbxRoom.Location = new System.Drawing.Point(171, 162);
-            this.cbxRoom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbxRoom.Location = new System.Drawing.Point(128, 132);
+            this.cbxRoom.Margin = new System.Windows.Forms.Padding(2);
             this.cbxRoom.Name = "cbxRoom";
-            this.cbxRoom.Size = new System.Drawing.Size(103, 24);
+            this.cbxRoom.Size = new System.Drawing.Size(78, 21);
             this.cbxRoom.TabIndex = 11;
             // 
             // cbxFloor
@@ -468,77 +557,212 @@ namespace MAID
             "3",
             "4",
             "5"});
-            this.cbxFloor.Location = new System.Drawing.Point(63, 162);
-            this.cbxFloor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbxFloor.Location = new System.Drawing.Point(47, 132);
+            this.cbxFloor.Margin = new System.Windows.Forms.Padding(2);
             this.cbxFloor.Name = "cbxFloor";
-            this.cbxFloor.Size = new System.Drawing.Size(52, 24);
+            this.cbxFloor.Size = new System.Drawing.Size(40, 21);
             this.cbxFloor.TabIndex = 10;
             this.cbxFloor.SelectedIndexChanged += new System.EventHandler(this.cbxFloor_SelectedIndexChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(60, 142);
+            this.label5.Location = new System.Drawing.Point(45, 115);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 17);
+            this.label5.Size = new System.Drawing.Size(30, 13);
             this.label5.TabIndex = 9;
             this.label5.Text = "Floor";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(168, 142);
+            this.label3.Location = new System.Drawing.Point(126, 115);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 17);
+            this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 8;
             this.label3.Text = "Room";
             // 
             // cbxMaid
             // 
             this.cbxMaid.FormattingEnabled = true;
-            this.cbxMaid.Location = new System.Drawing.Point(63, 82);
-            this.cbxMaid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbxMaid.Location = new System.Drawing.Point(47, 67);
+            this.cbxMaid.Margin = new System.Windows.Forms.Padding(2);
             this.cbxMaid.Name = "cbxMaid";
-            this.cbxMaid.Size = new System.Drawing.Size(185, 24);
+            this.cbxMaid.Size = new System.Drawing.Size(140, 21);
             this.cbxMaid.TabIndex = 7;
             this.cbxMaid.DropDown += new System.EventHandler(this.cbxMaid_DropDown);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(60, 63);
+            this.label4.Location = new System.Drawing.Point(45, 51);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 17);
+            this.label4.Size = new System.Drawing.Size(30, 13);
             this.label4.TabIndex = 6;
             this.label4.Text = "Maid";
             // 
             // btnCleaningAdd
             // 
-            this.btnCleaningAdd.Location = new System.Drawing.Point(235, 231);
-            this.btnCleaningAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCleaningAdd.Location = new System.Drawing.Point(176, 188);
+            this.btnCleaningAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnCleaningAdd.Name = "btnCleaningAdd";
-            this.btnCleaningAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnCleaningAdd.Size = new System.Drawing.Size(56, 19);
             this.btnCleaningAdd.TabIndex = 4;
             this.btnCleaningAdd.Text = "Add";
             this.btnCleaningAdd.UseVisualStyleBackColor = true;
             this.btnCleaningAdd.Click += new System.EventHandler(this.btnCleaningAdd_Click);
             // 
-            // textBox1
+            // tabCleaningHistory
             // 
-            this.textBox1.Location = new System.Drawing.Point(63, 290);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(341, 103);
-            this.textBox1.TabIndex = 14;
+            this.tabCleaningHistory.Controls.Add(this.btnListMaidHistory);
+            this.tabCleaningHistory.Controls.Add(this.lwMaidHistory);
+            this.tabCleaningHistory.Controls.Add(this.btnListCleaningHistory);
+            this.tabCleaningHistory.Controls.Add(this.lwCleaningHistory);
+            this.tabCleaningHistory.Location = new System.Drawing.Point(4, 22);
+            this.tabCleaningHistory.Margin = new System.Windows.Forms.Padding(2);
+            this.tabCleaningHistory.Name = "tabCleaningHistory";
+            this.tabCleaningHistory.Size = new System.Drawing.Size(1090, 526);
+            this.tabCleaningHistory.TabIndex = 2;
+            this.tabCleaningHistory.Text = "History";
+            this.tabCleaningHistory.UseVisualStyleBackColor = true;
+            // 
+            // btnListMaidHistory
+            // 
+            this.btnListMaidHistory.Location = new System.Drawing.Point(2, 30);
+            this.btnListMaidHistory.Margin = new System.Windows.Forms.Padding(2);
+            this.btnListMaidHistory.Name = "btnListMaidHistory";
+            this.btnListMaidHistory.Size = new System.Drawing.Size(56, 19);
+            this.btnListMaidHistory.TabIndex = 14;
+            this.btnListMaidHistory.Text = "List";
+            this.btnListMaidHistory.UseVisualStyleBackColor = true;
+            this.btnListMaidHistory.Click += new System.EventHandler(this.btnListMaidHistory_Click);
+            // 
+            // lwMaidHistory
+            // 
+            this.lwMaidHistory.AllowDrop = true;
+            this.lwMaidHistory.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader9,
+            this.columnHeader10,
+            this.columnHeader11,
+            this.columnHeader12,
+            this.columnHeader13});
+            this.lwMaidHistory.FullRowSelect = true;
+            this.lwMaidHistory.GridLines = true;
+            this.lwMaidHistory.HideSelection = false;
+            this.lwMaidHistory.Location = new System.Drawing.Point(2, 52);
+            this.lwMaidHistory.Margin = new System.Windows.Forms.Padding(2);
+            this.lwMaidHistory.Name = "lwMaidHistory";
+            this.lwMaidHistory.Size = new System.Drawing.Size(486, 460);
+            this.lwMaidHistory.TabIndex = 13;
+            this.lwMaidHistory.UseCompatibleStateImageBehavior = false;
+            this.lwMaidHistory.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "ID";
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "Name";
+            this.columnHeader10.Width = 124;
+            // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "Surname";
+            this.columnHeader11.Width = 145;
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "Rating";
+            // 
+            // columnHeader13
+            // 
+            this.columnHeader13.Text = "Rooms Cleaned";
+            this.columnHeader13.Width = 99;
+            // 
+            // btnListCleaningHistory
+            // 
+            this.btnListCleaningHistory.Location = new System.Drawing.Point(491, 30);
+            this.btnListCleaningHistory.Margin = new System.Windows.Forms.Padding(2);
+            this.btnListCleaningHistory.Name = "btnListCleaningHistory";
+            this.btnListCleaningHistory.Size = new System.Drawing.Size(56, 19);
+            this.btnListCleaningHistory.TabIndex = 12;
+            this.btnListCleaningHistory.Text = "List";
+            this.btnListCleaningHistory.UseVisualStyleBackColor = true;
+            this.btnListCleaningHistory.Click += new System.EventHandler(this.btnListHistory_Click);
+            // 
+            // lwCleaningHistory
+            // 
+            this.lwCleaningHistory.AllowDrop = true;
+            this.lwCleaningHistory.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6,
+            this.columnHeader7,
+            this.columnHeader8});
+            this.lwCleaningHistory.FullRowSelect = true;
+            this.lwCleaningHistory.GridLines = true;
+            this.lwCleaningHistory.HideSelection = false;
+            this.lwCleaningHistory.Location = new System.Drawing.Point(491, 52);
+            this.lwCleaningHistory.Margin = new System.Windows.Forms.Padding(2);
+            this.lwCleaningHistory.Name = "lwCleaningHistory";
+            this.lwCleaningHistory.Size = new System.Drawing.Size(602, 460);
+            this.lwCleaningHistory.TabIndex = 11;
+            this.lwCleaningHistory.UseCompatibleStateImageBehavior = false;
+            this.lwCleaningHistory.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "ID";
+            this.columnHeader1.Width = 26;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Name";
+            this.columnHeader2.Width = 86;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Surname";
+            this.columnHeader3.Width = 100;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Type";
+            this.columnHeader4.Width = 76;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Floor";
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Room";
+            this.columnHeader6.Width = 50;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Date";
+            this.columnHeader7.Width = 59;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Rating";
             // 
             // PDPSAppl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1488, 704);
+            this.ClientSize = new System.Drawing.Size(1107, 564);
             this.Controls.Add(this.mainTabControl);
             this.ForeColor = System.Drawing.Color.Coral;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "PDPSAppl";
             this.Text = "PDPS";
             this.Load += new System.EventHandler(this.PDPSApp_Load);
@@ -550,10 +774,12 @@ namespace MAID
             this.gBAddMaid.ResumeLayout(false);
             this.gBAddMaid.PerformLayout();
             this.tabCleaning.ResumeLayout(false);
+            this.tabCleaning.PerformLayout();
             this.gBCleaning.ResumeLayout(false);
             this.gBCleaning.PerformLayout();
             this.gBCleaningRB.ResumeLayout(false);
             this.gBCleaningRB.PerformLayout();
+            this.tabCleaningHistory.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -605,6 +831,29 @@ namespace MAID
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnMaidRemove;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TabPage tabCleaningHistory;
+        private System.Windows.Forms.ListView lwCleaningHistory;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.Button btnListCleaningHistory;
+        private System.Windows.Forms.Button btnListMaidHistory;
+        private System.Windows.Forms.ListView lwMaidHistory;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.ColumnHeader columnHeader11;
+        private System.Windows.Forms.ColumnHeader columnHeader12;
+        private System.Windows.Forms.ColumnHeader columnHeader13;
+        private System.Windows.Forms.ColumnHeader lwmSalary;
+        private System.Windows.Forms.MaskedTextBox txtSearch;
+        private System.Windows.Forms.ComboBox cbxSearch;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.DateTimePicker dateSearch;
     }
 }
 

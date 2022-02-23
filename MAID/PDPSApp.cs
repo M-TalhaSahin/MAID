@@ -27,12 +27,12 @@ namespace MAID
         
         private void btnListMaids_Click(object sender, EventArgs e)
         {
-            List<Maid> maidList = dbconnection.selectMaidList();
+            List<Maid> maidList = dbconnection.selectMaidList(true);
             lwMaid.Items.Clear();
             for (int i = 0; i < maidList.Count(); i++)
             {
                 string[] row = { maidList[i].Id.ToString(), maidList[i].Name, maidList[i].Surname, 
-                    maidList[i].Rating.ToString(), maidList[i].RoomsCleaned.ToString() };
+                    maidList[i].Rating.ToString(), maidList[i].RoomsCleaned.ToString(), maidList[i].Salary.ToString() };
                 var satir = new ListViewItem(row);
                 lwMaid.Items.Add(satir);
             }
@@ -48,7 +48,7 @@ namespace MAID
 
         private void cbxMaid_DropDown(object sender, EventArgs e)
         {
-            List<Maid> maidList = dbconnection.selectMaidList();
+            List<Maid> maidList = dbconnection.selectMaidList(true);
             cbxMaid.Items.Clear();
             foreach(Maid maid in maidList)
             {
@@ -69,7 +69,7 @@ namespace MAID
 
         private void btnListCln_Click(object sender, EventArgs e)
         {
-            List<Cleaning> cleanings = dbconnection.selectCleaningList();
+            List<Cleaning> cleanings = dbconnection.selectCleaningList(true);
             lwCleaning.Items.Clear();
             for (int i = 0; i < cleanings.Count(); i++)
             {
@@ -98,12 +98,13 @@ namespace MAID
         private void mainTabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (mainTabControl.SelectedIndex == 0) btnListMaids_Click(sender, e);
-            else btnListCln_Click(sender, e);
+            else if (mainTabControl.SelectedIndex == 1) btnListCln_Click(sender, e);
+            else btnListMaidHistory_Click(sender, e); btnListHistory_Click(sender, e);
         }
 
         private void cbxMaidRemove_DropDown(object sender, EventArgs e)
         {
-            List<Maid> maidList = dbconnection.selectMaidList();
+            List<Maid> maidList = dbconnection.selectMaidList(true);
             cbxMaidRemove.Items.Clear();
             foreach (Maid maid in maidList)
             {
@@ -116,6 +117,70 @@ namespace MAID
             dbconnection.removeMaid(Convert.ToInt32(cbxMaidRemove.SelectedItem.ToString().Split('-')[0]));
             cbxMaidRemove.Text = "";
             btnListMaids_Click(sender, e);
+        }
+
+        private void btnListHistory_Click(object sender, EventArgs e)
+        {
+            List<Cleaning> cleanings = dbconnection.selectCleaningList(false);
+            lwCleaningHistory.Items.Clear();
+            for (int i = 0; i < cleanings.Count(); i++)
+            {
+                string[] row = { cleanings[i].Maid.Id.ToString(), cleanings[i].Maid.Name, cleanings[i].Maid.Surname,
+                cleanings[i].Type.ToString(), cleanings[i].RoomNumber[0].ToString(), cleanings[i].RoomNumber, cleanings[i].Date, cleanings[i].Rateing.ToString()};
+                var satir = new ListViewItem(row);
+                lwCleaningHistory.Items.Add(satir);
+            }
+        }
+
+        private void btnListMaidHistory_Click(object sender, EventArgs e)
+        {
+            List<Maid> maidList = dbconnection.selectMaidList(false);
+            lwMaidHistory.Items.Clear();
+            for (int i = 0; i < maidList.Count(); i++)
+            {
+                string[] row = { maidList[i].Id.ToString(), maidList[i].Name, maidList[i].Surname,
+                    maidList[i].Rating.ToString(), maidList[i].RoomsCleaned.ToString() };
+                var satir = new ListViewItem(row);
+                lwMaidHistory.Items.Add(satir);
+            }
+        }
+
+        private void cbxSearch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (cbxSearch.SelectedIndex == 0)
+            {
+                dateSearch.Visible = false;
+                txtSearch.Visible = true;
+                txtSearch.Width = 25;
+            }
+            else if (cbxSearch.SelectedIndex == 1)
+            {
+                dateSearch.Visible = false;
+                txtSearch.Visible = true;
+                txtSearch.Width = 100;
+            }
+            else if (cbxSearch.SelectedIndex == 2)
+            {
+                dateSearch.Visible = true;
+                txtSearch.Visible = false;
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (cbxSearch.SelectedIndex == 0)
+            {
+                
+            }
+            else if (cbxSearch.SelectedIndex == 1)
+            {
+                 
+            }
+            else if (cbxSearch.SelectedIndex == 2)
+            {
+                
+            }
         }
     }
 }

@@ -42,38 +42,42 @@ namespace MAID
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(71, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(89, 29);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(235, 237);
+            this.pictureBox1.Size = new System.Drawing.Size(217, 237);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // txtUserName
             // 
             this.txtUserName.AcceptsTab = true;
-            this.txtUserName.Location = new System.Drawing.Point(114, 290);
+            this.txtUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUserName.Location = new System.Drawing.Point(136, 316);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(192, 20);
+            this.txtUserName.Size = new System.Drawing.Size(192, 27);
             this.txtUserName.TabIndex = 1;
             this.txtUserName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUserName_KeyDown);
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(114, 352);
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.Location = new System.Drawing.Point(133, 378);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(192, 20);
+            this.txtPassword.Size = new System.Drawing.Size(192, 27);
             this.txtPassword.TabIndex = 2;
             this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             // 
             // btnLogin
             // 
             this.btnLogin.AccessibleDescription = "";
-            this.btnLogin.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnLogin.BackColor = System.Drawing.Color.SteelBlue;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnLogin.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnLogin.Location = new System.Drawing.Point(114, 412);
+            this.btnLogin.Location = new System.Drawing.Point(133, 438);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(192, 33);
             this.btnLogin.TabIndex = 3;
@@ -85,7 +89,7 @@ namespace MAID
             // 
             this.lblUserName.AutoSize = true;
             this.lblUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblUserName.Location = new System.Drawing.Point(28, 291);
+            this.lblUserName.Location = new System.Drawing.Point(47, 322);
             this.lblUserName.Name = "lblUserName";
             this.lblUserName.Size = new System.Drawing.Size(83, 16);
             this.lblUserName.TabIndex = 4;
@@ -95,7 +99,7 @@ namespace MAID
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(28, 352);
+            this.label1.Location = new System.Drawing.Point(47, 384);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 16);
             this.label1.TabIndex = 5;
@@ -106,8 +110,8 @@ namespace MAID
             this.lblExit.AutoSize = true;
             this.lblExit.BackColor = System.Drawing.Color.Transparent;
             this.lblExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblExit.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.lblExit.Location = new System.Drawing.Point(270, 465);
+            this.lblExit.ForeColor = System.Drawing.Color.SteelBlue;
+            this.lblExit.Location = new System.Drawing.Point(344, 501);
             this.lblExit.Name = "lblExit";
             this.lblExit.Size = new System.Drawing.Size(36, 18);
             this.lblExit.TabIndex = 6;
@@ -118,6 +122,7 @@ namespace MAID
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(392, 528);
             this.Controls.Add(this.lblExit);
             this.Controls.Add(this.label1);
@@ -126,7 +131,7 @@ namespace MAID
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.pictureBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.KeyPreview = true;
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

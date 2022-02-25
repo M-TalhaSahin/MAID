@@ -1,0 +1,196 @@
+--
+-- PostgreSQL database cluster dump
+--
+
+-- Started on 2022-02-25 23:03:16
+
+SET default_transaction_read_only = off;
+
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+
+--
+-- Roles
+--
+
+CREATE ROLE postgres;
+ALTER ROLE postgres WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN REPLICATION BYPASSRLS PASSWORD 'SCRAM-SHA-256$4096:/mzv1HQOqpooeCzph0O8+g==$u6kkkmWc3Jbnrs8OjVzag9Fubai+8zr2O9r2Fa/dNd0=:IpOlupWcpsdjHnU244o9kUpyF9Cl1WBSjaLSWMZO1kw=';
+
+
+
+
+
+
+--
+-- Databases
+--
+
+--
+-- Database "template1" dump
+--
+
+\connect template1
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.1
+-- Dumped by pg_dump version 14.1
+
+-- Started on 2022-02-25 23:03:16
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+-- Completed on 2022-02-25 23:03:17
+
+--
+-- PostgreSQL database dump complete
+--
+
+--
+-- Database "denemehcan" dump
+--
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.1
+-- Dumped by pg_dump version 14.1
+
+-- Started on 2022-02-25 23:03:17
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 3308 (class 1262 OID 16394)
+-- Name: denemehcan; Type: DATABASE; Schema: -; Owner: postgres
+--
+
+CREATE DATABASE denemehcan WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'Turkish_Turkey.1254';
+
+
+ALTER DATABASE denemehcan OWNER TO postgres;
+
+\connect denemehcan
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 209 (class 1259 OID 16395)
+-- Name: adam; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.adam (
+    name character varying(20),
+    id integer
+);
+
+
+ALTER TABLE public.adam OWNER TO postgres;
+
+--
+-- TOC entry 3302 (class 0 OID 16395)
+-- Dependencies: 209
+-- Data for Name: adam; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.adam (name, id) FROM stdin;
+talha	1
+MTŞ	2
+\.
+
+
+-- Completed on 2022-02-25 23:03:17
+
+--
+-- PostgreSQL database dump complete
+--
+
+--
+-- Database "postgres" dump
+--
+
+\connect postgres
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.1
+-- Dumped by pg_dump version 14.1
+
+-- Started on 2022-02-25 23:03:17
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 2 (class 3079 OID 16384)
+-- Name: adminpack; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS adminpack WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 3304 (class 0 OID 0)
+-- Dependencies: 2
+-- Name: EXTENSION adminpack; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION adminpack IS 'administrative functions for PostgreSQL';
+
+
+-- Completed on 2022-02-25 23:03:18
+
+--
+-- PostgreSQL database dump complete
+--
+
+-- Completed on 2022-02-25 23:03:18
+
+--
+-- PostgreSQL database cluster dump complete
+--
+

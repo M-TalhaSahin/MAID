@@ -12,7 +12,7 @@ namespace MAID
         private static string Host = "localhost";
         private static string User = "postgres";
         private static string DBname = "PDPS";
-        private static string Password = "4458771";
+        private static string Password = "6026";
         private static string Port = "5432";
         private static NpgsqlConnection connection;
 

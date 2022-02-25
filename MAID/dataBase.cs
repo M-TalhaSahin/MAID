@@ -75,11 +75,11 @@ namespace MAID
             }
             return maids;
         }
-        public void insertTemizlik(int maidID, odaTipi odaTipi, string roomNumer, int rate)
+        public void insertTemizlik(int maidID, odaTipi odaTipi, string roomNumer, int rate, string yorum)
         {
             connection.Open();
-            var command = new NpgsqlCommand(String.Format("insert into tbltemizlikkayit(maid_id, odatipi, date, odano, rate) values({0}, CAST({1} AS bit), NOW(), {2}, {3})", 
-                maidID, (int)odaTipi, roomNumer, rate), connection);
+            var command = new NpgsqlCommand(String.Format("insert into tbltemizlikkayit(maid_id, odatipi, date, odano, rate, yorum) values({0}, CAST({1} AS bit), NOW(), {2}, {3}, '{4}')", 
+                maidID, (int)odaTipi, roomNumer, rate, yorum), connection);
             command.ExecuteNonQuery();
             command = new NpgsqlCommand(String.Format("select ratingavg, roomscleaned, salary from tblmaid where maid_id = {0}", maidID), connection);
             NpgsqlDataReader dr = command.ExecuteReader();
@@ -92,18 +92,33 @@ namespace MAID
             connection.Close();
             connection.Open();
 
-            if (odaTipi == dataBase.odaTipi.bakim) miktar += 25;
-            else miktar += 15;
+            if (odaTipi == dataBase.odaTipi.bakim) miktar += 15;
+            else miktar += 25;
 
 
             command = new NpgsqlCommand(String.Format("update tblmaid set roomscleaned = {0}, ratingavg = {1}, salary = {2} where maid_id = {3}", roomscleaned + 1, newrate, miktar, maidID), connection);
             command.ExecuteNonQuery();
             connection.Close();
         }
-        public List<Cleaning> selectCleaningList(bool isActive)
+        public List<Cleaning> selectCleaningList(bool isActive, int id = -1, string name = "", string date = "")
         {
+            string filter = "";
+            if(id != -1)
+            {
+                filter = " and m.maid_id = " + id.ToString();
+            }
+            else if(name != "")
+            {
+                filter = " and m.surname LIKE '%' || '" + name + "' || '%'";
+            }
+            else if(date != "")
+            {
+                filter = " and t.date = '" + (date.Split('/')[2] + "-" + date.Split('/')[0] + "-" + date.Split('/')[1] + "'");
+            }
             List<Cleaning> cleanings = new List<Cleaning>();
-            using (var command = new NpgsqlCommand("select m.maid_id, m.name, m.surname, t.odatipi, t.odano, t.date, t.rate, m.ratingavg, m.roomscleaned, m.salary from tbltemizlikkayit as t left join tblmaid as m on t.maid_id = m.maid_id where m.isactive = " + isActive.ToString(), connection))
+            using (var command = new NpgsqlCommand("select m.maid_id, m.name, m.surname, t.odatipi, t.odano, t.date, t.rate, m.ratingavg, m.roomscleaned, m.salary, t.temizlik_id " +
+                "from tbltemizlikkayit as t left join tblmaid as m on t.maid_id = m.maid_id " +
+                "where m.isactive = " + isActive.ToString() + filter, connection))
             {
                 connection.Open();
                 NpgsqlDataReader dr = command.ExecuteReader();
@@ -114,11 +129,21 @@ namespace MAID
                     else type = dataBase.odaTipi.bakim;
 
                     cleanings.Add(new Cleaning(new Maid(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), float.Parse(dr[7].ToString()), Convert.ToInt32(dr[8]), Convert.ToInt32(dr[9])),
-                        type, dr[4].ToString(), dr[5].ToString().Split(' ')[0], Convert.ToInt32(dr[6])));
+                        type, dr[4].ToString(), dr[5].ToString().Split(' ')[0], Convert.ToInt32(dr[6]), Convert.ToInt32(dr[10])));
                 }
                 connection.Close();
             }
             return cleanings;
+        }
+        public string selectCleaningYorum(int cleaningId)
+        {
+            connection.Open();
+            var command = new NpgsqlCommand(String.Format("select yorum from tbltemizlikkayit where temizlik_id = {0}", cleaningId), connection);
+            NpgsqlDataReader dr = command.ExecuteReader();
+            dr.Read();
+            string rstring = dr[0].ToString();
+            connection.Close();
+            return rstring;
         }
     }
 }

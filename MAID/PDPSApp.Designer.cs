@@ -66,7 +66,7 @@ namespace MAID
             this.lwmClnRate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnListCln = new System.Windows.Forms.Button();
             this.gBCleaning = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCleaningYorum = new System.Windows.Forms.TextBox();
             this.cbxRate = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.gBCleaningRB = new System.Windows.Forms.GroupBox();
@@ -97,6 +97,7 @@ namespace MAID
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lwmClnCid = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.mainTabControl.SuspendLayout();
             this.tabMaid.SuspendLayout();
             this.gbMaidRemove.SuspendLayout();
@@ -385,7 +386,8 @@ namespace MAID
             this.lwmClnFloor,
             this.lwmClnRoom,
             this.lwmClnDate,
-            this.lwmClnRate});
+            this.lwmClnRate,
+            this.lwmClnCid});
             this.lwCleaning.FullRowSelect = true;
             this.lwCleaning.GridLines = true;
             this.lwCleaning.HideSelection = false;
@@ -396,6 +398,7 @@ namespace MAID
             this.lwCleaning.TabIndex = 10;
             this.lwCleaning.UseCompatibleStateImageBehavior = false;
             this.lwCleaning.View = System.Windows.Forms.View.Details;
+            this.lwCleaning.DoubleClick += new System.EventHandler(this.lwCleaning_DoubleClick);
             // 
             // lwmClnID
             // 
@@ -429,7 +432,7 @@ namespace MAID
             // lwmClnDate
             // 
             this.lwmClnDate.Text = "Date";
-            this.lwmClnDate.Width = 59;
+            this.lwmClnDate.Width = 81;
             // 
             // lwmClnRate
             // 
@@ -448,7 +451,7 @@ namespace MAID
             // 
             // gBCleaning
             // 
-            this.gBCleaning.Controls.Add(this.textBox1);
+            this.gBCleaning.Controls.Add(this.txtCleaningYorum);
             this.gBCleaning.Controls.Add(this.cbxRate);
             this.gBCleaning.Controls.Add(this.label6);
             this.gBCleaning.Controls.Add(this.gBCleaningRB);
@@ -468,14 +471,14 @@ namespace MAID
             this.gBCleaning.TabStop = false;
             this.gBCleaning.Text = "Insert Cleaning";
             // 
-            // textBox1
+            // txtCleaningYorum
             // 
-            this.textBox1.Location = new System.Drawing.Point(47, 236);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(257, 84);
-            this.textBox1.TabIndex = 14;
+            this.txtCleaningYorum.Location = new System.Drawing.Point(47, 236);
+            this.txtCleaningYorum.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCleaningYorum.Multiline = true;
+            this.txtCleaningYorum.Name = "txtCleaningYorum";
+            this.txtCleaningYorum.Size = new System.Drawing.Size(257, 84);
+            this.txtCleaningYorum.TabIndex = 14;
             // 
             // cbxRate
             // 
@@ -755,6 +758,10 @@ namespace MAID
             // 
             this.columnHeader8.Text = "Rating";
             // 
+            // lwmClnCid
+            // 
+            this.lwmClnCid.Text = "CID";
+            // 
             // PDPSAppl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -830,7 +837,7 @@ namespace MAID
         private System.Windows.Forms.ComboBox cbxMaidRemove;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnMaidRemove;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCleaningYorum;
         private System.Windows.Forms.TabPage tabCleaningHistory;
         private System.Windows.Forms.ListView lwCleaningHistory;
         private System.Windows.Forms.ColumnHeader columnHeader1;
@@ -854,6 +861,7 @@ namespace MAID
         private System.Windows.Forms.ComboBox cbxSearch;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.DateTimePicker dateSearch;
+        private System.Windows.Forms.ColumnHeader lwmClnCid;
     }
 }
 

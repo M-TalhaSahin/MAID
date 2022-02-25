@@ -74,7 +74,7 @@ namespace MAID
             for (int i = 0; i < cleanings.Count(); i++)
             {
                 string[] row = { cleanings[i].Maid.Id.ToString(), cleanings[i].Maid.Name, cleanings[i].Maid.Surname,
-                cleanings[i].Type.ToString(), cleanings[i].RoomNumber[0].ToString(), cleanings[i].RoomNumber, cleanings[i].Date, cleanings[i].Rateing.ToString()};
+                cleanings[i].Type.ToString(), cleanings[i].RoomNumber[0].ToString(), cleanings[i].RoomNumber, cleanings[i].Date, cleanings[i].Rating.ToString(), cleanings[i].CId.ToString()};
                 var satir = new ListViewItem(row);
                 lwCleaning.Items.Add(satir);
             }
@@ -86,12 +86,13 @@ namespace MAID
             dataBase.odaTipi type;
             if (rBCaring.Checked) { type = dataBase.odaTipi.bakim; rBCaring.Checked = false; }
             else { type = dataBase.odaTipi.cikis; rbCheckout.Checked = false; }
-            dbconnection.insertTemizlik(id, type, cbxRoom.SelectedItem.ToString(), Convert.ToInt32(cbxRate.SelectedItem.ToString()));
+            dbconnection.insertTemizlik(id, type, cbxRoom.SelectedItem.ToString(), Convert.ToInt32(cbxRate.SelectedItem.ToString()), txtCleaningYorum.Text);
             cbxRoom.Text = "";
             cbxFloor.Text = "";
             cbxRate.Text = "";
             cbxRoom.Enabled = false;
             cbxMaid.Text = "";
+            txtCleaningYorum.Text = "";
             btnListCln_Click(sender, e);
         }
 
@@ -126,7 +127,7 @@ namespace MAID
             for (int i = 0; i < cleanings.Count(); i++)
             {
                 string[] row = { cleanings[i].Maid.Id.ToString(), cleanings[i].Maid.Name, cleanings[i].Maid.Surname,
-                cleanings[i].Type.ToString(), cleanings[i].RoomNumber[0].ToString(), cleanings[i].RoomNumber, cleanings[i].Date, cleanings[i].Rateing.ToString()};
+                cleanings[i].Type.ToString(), cleanings[i].RoomNumber[0].ToString(), cleanings[i].RoomNumber, cleanings[i].Date, cleanings[i].Rating.ToString()};
                 var satir = new ListViewItem(row);
                 lwCleaningHistory.Items.Add(satir);
             }
@@ -169,18 +170,34 @@ namespace MAID
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            List<Cleaning> cleanings = null;
             if (cbxSearch.SelectedIndex == 0)
             {
+                cleanings = dbconnection.selectCleaningList(true, id: Convert.ToInt32(txtSearch.Text));
                 
             }
             else if (cbxSearch.SelectedIndex == 1)
             {
-                 
+                cleanings = dbconnection.selectCleaningList(true, name: txtSearch.Text);
             }
             else if (cbxSearch.SelectedIndex == 2)
             {
-                
+                cleanings = dbconnection.selectCleaningList(true, date: dateSearch.Text);
             }
+
+            lwCleaning.Items.Clear();
+            for (int i = 0; i < cleanings.Count(); i++)
+            {
+                string[] row = { cleanings[i].Maid.Id.ToString(), cleanings[i].Maid.Name, cleanings[i].Maid.Surname,
+                    cleanings[i].Type.ToString(), cleanings[i].RoomNumber[0].ToString(), cleanings[i].RoomNumber, cleanings[i].Date, cleanings[i].Rating.ToString()};
+                var satir = new ListViewItem(row);
+                lwCleaning.Items.Add(satir);
+            }
+        }
+
+        private void lwCleaning_DoubleClick(object sender, EventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("yorum ->" + dbconnection.selectCleaningYorum(Convert.ToInt32(lwCleaning.SelectedItems[0].SubItems[8].Text)));
         }
     }
 }

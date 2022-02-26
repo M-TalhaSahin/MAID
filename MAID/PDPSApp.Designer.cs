@@ -68,6 +68,7 @@ namespace MAID
             this.lwmClnCid = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnListCln = new System.Windows.Forms.Button();
             this.gBCleaning = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.txtCleaningYorum = new System.Windows.Forms.TextBox();
             this.cbxRate = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -99,7 +100,6 @@ namespace MAID
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label7 = new System.Windows.Forms.Label();
             this.mainTabControl.SuspendLayout();
             this.tabMaid.SuspendLayout();
             this.gbMaidRemove.SuspendLayout();
@@ -478,6 +478,16 @@ namespace MAID
             this.gBCleaning.TabStop = false;
             this.gBCleaning.Text = "Insert Cleaning";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(31, 163);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(51, 13);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Comment";
+            // 
             // txtCleaningYorum
             // 
             this.txtCleaningYorum.Location = new System.Drawing.Point(34, 178);
@@ -766,20 +776,11 @@ namespace MAID
             // 
             this.columnHeader8.Text = "Rating";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(31, 163);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(51, 13);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Comment";
-            // 
             // PDPSAppl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(1107, 564);
             this.Controls.Add(this.mainTabControl);
             this.ForeColor = System.Drawing.Color.Coral;

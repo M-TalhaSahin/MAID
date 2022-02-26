@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
+
 
 namespace MAID
 {
@@ -16,6 +18,10 @@ namespace MAID
         public PDPSAppl()
         {
             InitializeComponent();
+        }
+        ~PDPSAppl()
+        {
+            GC.Collect();
         }
 
         private void PDPSApp_Load(object sender, EventArgs e)
@@ -189,7 +195,7 @@ namespace MAID
             for (int i = 0; i < cleanings.Count(); i++)
             {
                 string[] row = { cleanings[i].Maid.Id.ToString(), cleanings[i].Maid.Name, cleanings[i].Maid.Surname,
-                    cleanings[i].Type.ToString(), cleanings[i].RoomNumber[0].ToString(), cleanings[i].RoomNumber, cleanings[i].Date, cleanings[i].Rating.ToString()};
+                    cleanings[i].Type.ToString(), cleanings[i].RoomNumber[0].ToString(), cleanings[i].RoomNumber, cleanings[i].Date, cleanings[i].Rating.ToString(), cleanings[i].CId.ToString()};
                 var satir = new ListViewItem(row);
                 lwCleaning.Items.Add(satir);
             }
@@ -198,6 +204,55 @@ namespace MAID
         private void lwCleaning_DoubleClick(object sender, EventArgs e)
         {
             System.Windows.Forms.MessageBox.Show("yorum ->" + dbconnection.selectCleaningYorum(Convert.ToInt32(lwCleaning.SelectedItems[0].SubItems[8].Text)));
+        }
+        private void ToExcel(ListView myList)
+        {
+            GC.Collect();
+            Excel.Application app = new Excel.Application();
+            app.Visible = true;
+            Excel.Workbook wb = app.Workbooks.Add(1);
+            Excel.Worksheet ws = (Excel.Worksheet)wb.Worksheets[1];
+            int i = 1;
+            int i2 = 1;
+            foreach (ColumnHeader ch in myList.Columns)
+            {
+                ws.Cells[i2, i] = ch.Text;
+                if(i % 2 == 0)
+                    ws.Cells[i2, i].Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.LightSteelBlue);
+                else
+                    ws.Cells[i2, i].Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.LightSkyBlue);
+                i++;
+            }
+            i = 1;
+            i2 = 2;
+            foreach (ListViewItem lvi in myList.Items)
+            {
+                foreach (ListViewItem.ListViewSubItem lvs in lvi.SubItems)
+                {
+                    ws.Cells[i2, i] = lvs.Text;
+                    if (i % 2 == 0)
+                        ws.Cells[i2, i].Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.WhiteSmoke);
+                    i++;
+                }
+                i2++;
+                i = 1;
+            }
+            ws.Columns.AutoFit();
+            ws.Columns.Borders.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.LightGray);
+            try { wb.SaveAs(@"C:\Users\muham\Desktop\New folder\dfsfsd.xlsx"); }
+            catch(Exception) { }
+            wb.Close();
+            app.Quit();
+        }
+
+        private void btnMaidExport_Click(object sender, EventArgs e)
+        {
+            ToExcel(lwMaid);
+        }
+
+        private void btnExportCleaning_Click(object sender, EventArgs e)
+        {
+            ToExcel(lwCleaning);
         }
     }
 }

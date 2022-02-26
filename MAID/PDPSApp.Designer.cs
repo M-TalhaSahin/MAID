@@ -68,6 +68,7 @@ namespace MAID
             this.lwmClnCid = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnListCln = new System.Windows.Forms.Button();
             this.gBCleaning = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.txtCleaningYorum = new System.Windows.Forms.TextBox();
             this.cbxRate = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -99,7 +100,8 @@ namespace MAID
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label7 = new System.Windows.Forms.Label();
+            this.btnMaidExport = new System.Windows.Forms.Button();
+            this.btnExportCleaning = new System.Windows.Forms.Button();
             this.mainTabControl.SuspendLayout();
             this.tabMaid.SuspendLayout();
             this.gbMaidRemove.SuspendLayout();
@@ -127,6 +129,7 @@ namespace MAID
             // tabMaid
             // 
             this.tabMaid.BackColor = System.Drawing.Color.LightSlateGray;
+            this.tabMaid.Controls.Add(this.btnMaidExport);
             this.tabMaid.Controls.Add(this.gbMaidRemove);
             this.tabMaid.Controls.Add(this.btnListMaids);
             this.tabMaid.Controls.Add(this.txtOutput);
@@ -321,6 +324,7 @@ namespace MAID
             // tabCleaning
             // 
             this.tabCleaning.BackColor = System.Drawing.Color.LightSlateGray;
+            this.tabCleaning.Controls.Add(this.btnExportCleaning);
             this.tabCleaning.Controls.Add(this.txtSearch);
             this.tabCleaning.Controls.Add(this.cbxSearch);
             this.tabCleaning.Controls.Add(this.btnSearch);
@@ -339,7 +343,7 @@ namespace MAID
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(781, 12);
+            this.txtSearch.Location = new System.Drawing.Point(662, 12);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(100, 20);
             this.txtSearch.TabIndex = 12;
@@ -360,7 +364,7 @@ namespace MAID
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(987, 8);
+            this.btnSearch.Location = new System.Drawing.Point(880, 12);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 14;
@@ -371,7 +375,7 @@ namespace MAID
             // dateSearch
             // 
             this.dateSearch.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateSearch.Location = new System.Drawing.Point(781, 11);
+            this.dateSearch.Location = new System.Drawing.Point(662, 11);
             this.dateSearch.Name = "dateSearch";
             this.dateSearch.Size = new System.Drawing.Size(200, 20);
             this.dateSearch.TabIndex = 13;
@@ -477,6 +481,16 @@ namespace MAID
             this.gBCleaning.TabIndex = 7;
             this.gBCleaning.TabStop = false;
             this.gBCleaning.Text = "Insert Cleaning";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(31, 163);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(51, 13);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Comment";
             // 
             // txtCleaningYorum
             // 
@@ -766,15 +780,25 @@ namespace MAID
             // 
             this.columnHeader8.Text = "Rating";
             // 
-            // label7
+            // btnMaidExport
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(31, 163);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(51, 13);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Comment";
+            this.btnMaidExport.Location = new System.Drawing.Point(995, 21);
+            this.btnMaidExport.Name = "btnMaidExport";
+            this.btnMaidExport.Size = new System.Drawing.Size(75, 23);
+            this.btnMaidExport.TabIndex = 9;
+            this.btnMaidExport.Text = "Export";
+            this.btnMaidExport.UseVisualStyleBackColor = true;
+            this.btnMaidExport.Click += new System.EventHandler(this.btnMaidExport_Click);
+            // 
+            // btnExportCleaning
+            // 
+            this.btnExportCleaning.Location = new System.Drawing.Point(990, 12);
+            this.btnExportCleaning.Name = "btnExportCleaning";
+            this.btnExportCleaning.Size = new System.Drawing.Size(75, 23);
+            this.btnExportCleaning.TabIndex = 16;
+            this.btnExportCleaning.Text = "Export";
+            this.btnExportCleaning.UseVisualStyleBackColor = true;
+            this.btnExportCleaning.Click += new System.EventHandler(this.btnExportCleaning_Click);
             // 
             // PDPSAppl
             // 
@@ -878,6 +902,8 @@ namespace MAID
         private System.Windows.Forms.DateTimePicker dateSearch;
         private System.Windows.Forms.ColumnHeader lwmClnCid;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnMaidExport;
+        private System.Windows.Forms.Button btnExportCleaning;
     }
 }
 

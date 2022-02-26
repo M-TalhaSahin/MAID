@@ -16,6 +16,8 @@ namespace MAID
         {
             InitializeComponent();
             txtPassword.PasswordChar = '*';
+            txtUserName.Text = "admin";
+            txtPassword.Text = "1234";
         }
 
       
@@ -24,8 +26,10 @@ namespace MAID
         {
             if(txtUserName.Text == "admin" && txtPassword.Text == "1234")
             {
-                new PDPSAppl().Show();
+                PDPSAppl mainForm = new PDPSAppl();
                 this.Hide();
+                mainForm.ShowDialog();
+                this.Close();
             }
             else
             {

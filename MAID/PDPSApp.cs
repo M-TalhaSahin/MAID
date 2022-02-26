@@ -121,9 +121,13 @@ namespace MAID
 
         private void btnMaidRemove_Click(object sender, EventArgs e)
         {
-            dbconnection.removeMaid(Convert.ToInt32(cbxMaidRemove.SelectedItem.ToString().Split('-')[0]));
-            cbxMaidRemove.Text = "";
-            btnListMaids_Click(sender, e);
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete? ", "Maid Delete", MessageBoxButtons.OKCancel);
+            if(dialogResult == DialogResult.OK)
+            {
+                dbconnection.removeMaid(Convert.ToInt32(cbxMaidRemove.SelectedItem.ToString().Split('-')[0]));
+                cbxMaidRemove.Text = "";
+                btnListMaids_Click(sender, e);
+            }
         }
 
         private void btnListHistory_Click(object sender, EventArgs e)

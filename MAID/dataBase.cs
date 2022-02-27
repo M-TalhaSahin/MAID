@@ -12,7 +12,7 @@ namespace MAID
         private static string Host = "localhost";
         private static string User = "postgres";
         private static string DBname = "PDPS";
-        private static string Password = "4458771";
+        private static string Password = "6026";
         private static string Port = "5432";
         private static NpgsqlConnection connection;
 
@@ -92,8 +92,8 @@ namespace MAID
             connection.Close();
             connection.Open();
 
-            if (odaTipi == dataBase.odaTipi.bakim) miktar += 15;
-            else miktar += 25;
+            if (odaTipi == dataBase.odaTipi.bakim) miktar += 5;
+            else miktar += 5;
 
 
             command = new NpgsqlCommand(String.Format("update tblmaid set roomscleaned = {0}, ratingavg = {1}, salary = {2} where maid_id = {3}", roomscleaned + 1, newrate, miktar, maidID), connection);
@@ -113,7 +113,7 @@ namespace MAID
             }
             else if(date != "")
             {
-                filter = " and t.date = '" + (date.Split('/')[2] + "-" + date.Split('/')[0] + "-" + date.Split('/')[1] + "'");
+                filter = " and t.date = '" + (date.Split('.')[2] + "-" + date.Split('.')[1] + "-" + date.Split('.')[0] + "'");
             }
             List<Cleaning> cleanings = new List<Cleaning>();
             using (var command = new NpgsqlCommand("select m.maid_id, m.name, m.surname, t.odatipi, t.odano, t.date, t.rate, m.ratingavg, m.roomscleaned, m.salary, t.temizlik_id " +

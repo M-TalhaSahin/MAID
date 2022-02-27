@@ -32,6 +32,7 @@ namespace MAID
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PDPSAppl));
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.tabMaid = new System.Windows.Forms.TabPage();
+            this.btnMaidExport = new System.Windows.Forms.Button();
             this.gbMaidRemove = new System.Windows.Forms.GroupBox();
             this.cbxMaidRemove = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -52,6 +53,7 @@ namespace MAID
             this.lwmRoomsCleaned = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lwmSalary = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabCleaning = new System.Windows.Forms.TabPage();
+            this.btnExportCleaning = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.MaskedTextBox();
             this.cbxSearch = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -70,8 +72,6 @@ namespace MAID
             this.gBCleaning = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtCleaningYorum = new System.Windows.Forms.TextBox();
-            this.cbxRate = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.gBCleaningRB = new System.Windows.Forms.GroupBox();
             this.rBCaring = new System.Windows.Forms.RadioButton();
             this.rbCheckout = new System.Windows.Forms.RadioButton();
@@ -100,8 +100,9 @@ namespace MAID
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnMaidExport = new System.Windows.Forms.Button();
-            this.btnExportCleaning = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbxRate = new System.Windows.Forms.ComboBox();
+            this.btnCowDisco = new System.Windows.Forms.Button();
             this.mainTabControl.SuspendLayout();
             this.tabMaid.SuspendLayout();
             this.gbMaidRemove.SuspendLayout();
@@ -129,6 +130,7 @@ namespace MAID
             // tabMaid
             // 
             this.tabMaid.BackColor = System.Drawing.Color.LightSlateGray;
+            this.tabMaid.Controls.Add(this.btnCowDisco);
             this.tabMaid.Controls.Add(this.btnMaidExport);
             this.tabMaid.Controls.Add(this.gbMaidRemove);
             this.tabMaid.Controls.Add(this.btnListMaids);
@@ -143,6 +145,16 @@ namespace MAID
             this.tabMaid.Size = new System.Drawing.Size(1090, 526);
             this.tabMaid.TabIndex = 0;
             this.tabMaid.Text = "Maid";
+            // 
+            // btnMaidExport
+            // 
+            this.btnMaidExport.Location = new System.Drawing.Point(995, 21);
+            this.btnMaidExport.Name = "btnMaidExport";
+            this.btnMaidExport.Size = new System.Drawing.Size(75, 23);
+            this.btnMaidExport.TabIndex = 9;
+            this.btnMaidExport.Text = "Export";
+            this.btnMaidExport.UseVisualStyleBackColor = true;
+            this.btnMaidExport.Click += new System.EventHandler(this.btnMaidExport_Click);
             // 
             // gbMaidRemove
             // 
@@ -202,6 +214,8 @@ namespace MAID
             // 
             // txtOutput
             // 
+            this.txtOutput.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.txtOutput.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtOutput.Location = new System.Drawing.Point(33, 396);
             this.txtOutput.Margin = new System.Windows.Forms.Padding(2);
             this.txtOutput.Multiline = true;
@@ -340,6 +354,16 @@ namespace MAID
             this.tabCleaning.Size = new System.Drawing.Size(1090, 526);
             this.tabCleaning.TabIndex = 1;
             this.tabCleaning.Text = "Cleaning";
+            // 
+            // btnExportCleaning
+            // 
+            this.btnExportCleaning.Location = new System.Drawing.Point(990, 12);
+            this.btnExportCleaning.Name = "btnExportCleaning";
+            this.btnExportCleaning.Size = new System.Drawing.Size(75, 23);
+            this.btnExportCleaning.TabIndex = 16;
+            this.btnExportCleaning.Text = "Export";
+            this.btnExportCleaning.UseVisualStyleBackColor = true;
+            this.btnExportCleaning.Click += new System.EventHandler(this.btnExportCleaning_Click);
             // 
             // txtSearch
             // 
@@ -500,31 +524,6 @@ namespace MAID
             this.txtCleaningYorum.Name = "txtCleaningYorum";
             this.txtCleaningYorum.Size = new System.Drawing.Size(210, 67);
             this.txtCleaningYorum.TabIndex = 14;
-            // 
-            // cbxRate
-            // 
-            this.cbxRate.FormattingEnabled = true;
-            this.cbxRate.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5"});
-            this.cbxRate.Location = new System.Drawing.Point(259, 178);
-            this.cbxRate.Margin = new System.Windows.Forms.Padding(2);
-            this.cbxRate.Name = "cbxRate";
-            this.cbxRate.Size = new System.Drawing.Size(40, 21);
-            this.cbxRate.TabIndex = 13;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(256, 163);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(30, 13);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Rate";
             // 
             // gBCleaningRB
             // 
@@ -780,25 +779,46 @@ namespace MAID
             // 
             this.columnHeader8.Text = "Rating";
             // 
-            // btnMaidExport
+            // label6
             // 
-            this.btnMaidExport.Location = new System.Drawing.Point(995, 21);
-            this.btnMaidExport.Name = "btnMaidExport";
-            this.btnMaidExport.Size = new System.Drawing.Size(75, 23);
-            this.btnMaidExport.TabIndex = 9;
-            this.btnMaidExport.Text = "Export";
-            this.btnMaidExport.UseVisualStyleBackColor = true;
-            this.btnMaidExport.Click += new System.EventHandler(this.btnMaidExport_Click);
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(256, 163);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(30, 13);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Rate";
             // 
-            // btnExportCleaning
+            // cbxRate
             // 
-            this.btnExportCleaning.Location = new System.Drawing.Point(990, 12);
-            this.btnExportCleaning.Name = "btnExportCleaning";
-            this.btnExportCleaning.Size = new System.Drawing.Size(75, 23);
-            this.btnExportCleaning.TabIndex = 16;
-            this.btnExportCleaning.Text = "Export";
-            this.btnExportCleaning.UseVisualStyleBackColor = true;
-            this.btnExportCleaning.Click += new System.EventHandler(this.btnExportCleaning_Click);
+            this.cbxRate.FormattingEnabled = true;
+            this.cbxRate.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
+            this.cbxRate.Location = new System.Drawing.Point(259, 178);
+            this.cbxRate.Margin = new System.Windows.Forms.Padding(2);
+            this.cbxRate.Name = "cbxRate";
+            this.cbxRate.Size = new System.Drawing.Size(40, 21);
+            this.cbxRate.TabIndex = 13;
+            // 
+            // btnCowDisco
+            // 
+            this.btnCowDisco.BackColor = System.Drawing.Color.Plum;
+            this.btnCowDisco.FlatAppearance.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnCowDisco.FlatAppearance.BorderSize = 3;
+            this.btnCowDisco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCowDisco.Font = new System.Drawing.Font("Perpetua Titling MT", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCowDisco.ForeColor = System.Drawing.Color.Gold;
+            this.btnCowDisco.Location = new System.Drawing.Point(38, 358);
+            this.btnCowDisco.Name = "btnCowDisco";
+            this.btnCowDisco.Size = new System.Drawing.Size(140, 33);
+            this.btnCowDisco.TabIndex = 10;
+            this.btnCowDisco.Text = "DISCO COW";
+            this.btnCowDisco.UseVisualStyleBackColor = false;
+            this.btnCowDisco.Click += new System.EventHandler(this.btnCowDisco_Click);
             // 
             // PDPSAppl
             // 
@@ -868,8 +888,6 @@ namespace MAID
         private System.Windows.Forms.ColumnHeader lwmClnRoom;
         private System.Windows.Forms.ColumnHeader lwmClnDate;
         private System.Windows.Forms.Button btnListCln;
-        private System.Windows.Forms.ComboBox cbxRate;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ColumnHeader lwmClnRate;
         private System.Windows.Forms.ColumnHeader lwmRatingAvg;
         private System.Windows.Forms.ColumnHeader lwmRoomsCleaned;
@@ -905,6 +923,9 @@ namespace MAID
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnMaidExport;
         private System.Windows.Forms.Button btnExportCleaning;
+        private System.Windows.Forms.ComboBox cbxRate;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnCowDisco;
     }
 }
 

@@ -27,10 +27,43 @@ namespace MAID
         private void PDPSApp_Load(object sender, EventArgs e)
         {
             //dbconnection.clearDB();
-
+            cowification();
             mainTabControl_SelectedIndexChanged(sender, e);
         }
-        
+        private void cowification()
+        {
+            txtOutput.Clear();
+            txtOutput.AppendText("\\|/                                          \\|/                 🟄");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("                      ( _ _ )                                 / \\");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("    ``\\ - - - - - - ( o o )                               / i \\ \\");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("       | |              ( _ _ )                              o / \\ \\");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("       | | w - - | |                 \\|/                    / / / \\ i \\");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("                                                            / / * / o \\ \\");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("   \\|/                                   \\|/                     |   |");
+        }
+        private void cowHeadBang()
+        {
+            txtOutput.Clear();
+            txtOutput.AppendText("\\|/                                          \\|/                 🟄");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("                        ( _ _ )                               / \\");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("    ``\\ - - - - - -   ( o o )                             / i \\ \\");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("       | |                ( _ _ )                            o / \\ \\");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("       | | w - - | |                 \\|/                    / / / \\ i \\");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("                                                            / / * / o \\ \\");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("   \\|/                                   \\|/                     |   |");
+        }
         private void btnListMaids_Click(object sender, EventArgs e)
         {
             List<Maid> maidList = dbconnection.selectMaidList(true);
@@ -243,10 +276,6 @@ namespace MAID
             }
             ws.Columns.AutoFit();
             ws.Columns.Borders.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.LightGray);
-            try { wb.SaveAs(@"C:\Users\muham\Desktop\New folder\dfsfsd.xlsx"); }
-            catch(Exception) { }
-            wb.Close();
-            app.Quit();
         }
 
         private void btnMaidExport_Click(object sender, EventArgs e)
@@ -257,6 +286,17 @@ namespace MAID
         private void btnExportCleaning_Click(object sender, EventArgs e)
         {
             ToExcel(lwCleaning);
+        }
+
+        private void btnCowDisco_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                cowHeadBang();
+                System.Threading.Thread.Sleep(200);
+                cowification();
+                System.Threading.Thread.Sleep(200);
+            }
         }
     }
 }

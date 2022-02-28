@@ -33,36 +33,36 @@ namespace MAID
         private void cowification()
         {
             txtOutput.Clear();
-            txtOutput.AppendText("\\|/                                          \\|/                 🟄");
+            txtOutput.AppendText("\\|/                                          \\|/");
             txtOutput.AppendText(Environment.NewLine);
-            txtOutput.AppendText("                      ( _ _ )                                 / \\");
+            txtOutput.AppendText("                        ( _ _ )                                  /🟄\\                \\|/");
             txtOutput.AppendText(Environment.NewLine);
-            txtOutput.AppendText("    ``\\ - - - - - - ( o o )                               / i \\ \\");
+            txtOutput.AppendText("      ``\\ - - - - - - ( o o )                               (  \\i \\ )");
             txtOutput.AppendText(Environment.NewLine);
-            txtOutput.AppendText("       | |              ( _ _ )                              o / \\ \\");
+            txtOutput.AppendText("         | |              ( _ _ )                            ( / * / o \\ )                       \\|/");
             txtOutput.AppendText(Environment.NewLine);
-            txtOutput.AppendText("       | | w - - | |                 \\|/                    / / / \\ i \\");
+            txtOutput.AppendText("         | | w - - | |                    \\|/                  ( / / \\ i )                 \\|/");
             txtOutput.AppendText(Environment.NewLine);
-            txtOutput.AppendText("                                                            / / * / o \\ \\");
+            txtOutput.AppendText("                                \\|/                    \\|/           |   |");
             txtOutput.AppendText(Environment.NewLine);
-            txtOutput.AppendText("   \\|/                                   \\|/                     |   |");
+            txtOutput.AppendText("   \\|/                                    \\|/                        |   |       \\|/                      \\|/");
         }
         private void cowHeadBang()
         {
             txtOutput.Clear();
-            txtOutput.AppendText("\\|/                                          \\|/                 🟄");
+            txtOutput.AppendText("\\|/                                          \\|/");
             txtOutput.AppendText(Environment.NewLine);
-            txtOutput.AppendText("                        ( _ _ )                               / \\");
+            txtOutput.AppendText("                          ( _ _ )                                /🟄\\                \\|/");
             txtOutput.AppendText(Environment.NewLine);
-            txtOutput.AppendText("    ``\\ - - - - - -   ( o o )                             / i \\ \\");
+            txtOutput.AppendText("      ``\\ - - - - - -   ( o o )                             (  \\i \\ )");
             txtOutput.AppendText(Environment.NewLine);
-            txtOutput.AppendText("       | |                ( _ _ )                            o / \\ \\");
+            txtOutput.AppendText("         | |                ( _ _ )                          ( / * / o \\ )                       \\|/");
             txtOutput.AppendText(Environment.NewLine);
-            txtOutput.AppendText("       | | w - - | |                 \\|/                    / / / \\ i \\");
+            txtOutput.AppendText("         | | w - - | |                    \\|/                  ( / / \\ i )                 \\|/");
             txtOutput.AppendText(Environment.NewLine);
-            txtOutput.AppendText("                                                            / / * / o \\ \\");
+            txtOutput.AppendText("                                \\|/                    \\|/           |   |");
             txtOutput.AppendText(Environment.NewLine);
-            txtOutput.AppendText("   \\|/                                   \\|/                     |   |");
+            txtOutput.AppendText("   \\|/                                    \\|/                        |   |       \\|/                      \\|/");
         }
         private void btnListMaids_Click(object sender, EventArgs e)
         {

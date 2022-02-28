@@ -321,6 +321,24 @@ namespace MAID
             this.tabMaid.TabIndex = 0;
             this.tabMaid.Text = "Maid";
             // 
+
+            // btnCowDisco
+            // 
+            this.btnCowDisco.BackColor = System.Drawing.Color.Plum;
+            this.btnCowDisco.FlatAppearance.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnCowDisco.FlatAppearance.BorderSize = 3;
+            this.btnCowDisco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCowDisco.Font = new System.Drawing.Font("Perpetua Titling MT", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCowDisco.ForeColor = System.Drawing.Color.Gold;
+            this.btnCowDisco.Location = new System.Drawing.Point(33, 358);
+            this.btnCowDisco.Name = "btnCowDisco";
+            this.btnCowDisco.Size = new System.Drawing.Size(140, 33);
+            this.btnCowDisco.TabIndex = 10;
+            this.btnCowDisco.Text = "DISCO COW";
+            this.btnCowDisco.UseVisualStyleBackColor = false;
+            this.btnCowDisco.Click += new System.EventHandler(this.btnCowDisco_Click);
+            // 
+
             // btnMaidExport
             // 
             this.btnMaidExport.Location = new System.Drawing.Point(995, 21);

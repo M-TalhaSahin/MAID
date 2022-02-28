@@ -838,6 +838,7 @@ namespace MAID
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "PDPSAppl";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "PDPS";
             this.Load += new System.EventHandler(this.PDPSApp_Load);
             this.mainTabControl.ResumeLayout(false);

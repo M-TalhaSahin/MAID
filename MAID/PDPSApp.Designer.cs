@@ -188,6 +188,7 @@ namespace MAID
             // 
             // cbxMaidRemove
             // 
+            this.cbxMaidRemove.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxMaidRemove.FormattingEnabled = true;
             this.cbxMaidRemove.Location = new System.Drawing.Point(47, 48);
             this.cbxMaidRemove.Margin = new System.Windows.Forms.Padding(2);
@@ -285,7 +286,7 @@ namespace MAID
             // 
             // btnAddMaid
             // 
-            this.btnAddMaid.Location = new System.Drawing.Point(260, 102);
+            this.btnAddMaid.Location = new System.Drawing.Point(260, 104);
             this.btnAddMaid.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddMaid.Name = "btnAddMaid";
             this.btnAddMaid.Size = new System.Drawing.Size(56, 20);
@@ -391,6 +392,7 @@ namespace MAID
             // 
             // cbxSearch
             // 
+            this.cbxSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxSearch.FormattingEnabled = true;
             this.cbxSearch.Items.AddRange(new object[] {
             "ID",
@@ -544,6 +546,7 @@ namespace MAID
             // 
             // cbxRate
             // 
+            this.cbxRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxRate.FormattingEnabled = true;
             this.cbxRate.Items.AddRange(new object[] {
             "1",
@@ -554,7 +557,7 @@ namespace MAID
             this.cbxRate.Location = new System.Drawing.Point(259, 178);
             this.cbxRate.Margin = new System.Windows.Forms.Padding(2);
             this.cbxRate.Name = "cbxRate";
-            this.cbxRate.Size = new System.Drawing.Size(40, 21);
+            this.cbxRate.Size = new System.Drawing.Size(56, 21);
             this.cbxRate.TabIndex = 13;
             // 
             // label6
@@ -571,11 +574,11 @@ namespace MAID
             // 
             this.gBCleaningRB.Controls.Add(this.rBCaring);
             this.gBCleaningRB.Controls.Add(this.rbCheckout);
-            this.gBCleaningRB.Location = new System.Drawing.Point(232, 61);
+            this.gBCleaningRB.Location = new System.Drawing.Point(224, 61);
             this.gBCleaningRB.Margin = new System.Windows.Forms.Padding(2);
             this.gBCleaningRB.Name = "gBCleaningRB";
             this.gBCleaningRB.Padding = new System.Windows.Forms.Padding(2);
-            this.gBCleaningRB.Size = new System.Drawing.Size(90, 74);
+            this.gBCleaningRB.Size = new System.Drawing.Size(91, 74);
             this.gBCleaningRB.TabIndex = 8;
             this.gBCleaningRB.TabStop = false;
             // 
@@ -605,6 +608,7 @@ namespace MAID
             // 
             // cbxRoom
             // 
+            this.cbxRoom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxRoom.Enabled = false;
             this.cbxRoom.FormattingEnabled = true;
             this.cbxRoom.Location = new System.Drawing.Point(117, 126);
@@ -615,6 +619,7 @@ namespace MAID
             // 
             // cbxFloor
             // 
+            this.cbxFloor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxFloor.FormattingEnabled = true;
             this.cbxFloor.Items.AddRange(new object[] {
             "1",
@@ -625,7 +630,7 @@ namespace MAID
             this.cbxFloor.Location = new System.Drawing.Point(34, 124);
             this.cbxFloor.Margin = new System.Windows.Forms.Padding(2);
             this.cbxFloor.Name = "cbxFloor";
-            this.cbxFloor.Size = new System.Drawing.Size(40, 21);
+            this.cbxFloor.Size = new System.Drawing.Size(54, 21);
             this.cbxFloor.TabIndex = 10;
             this.cbxFloor.SelectedIndexChanged += new System.EventHandler(this.cbxFloor_SelectedIndexChanged);
             // 
@@ -651,11 +656,12 @@ namespace MAID
             // 
             // cbxMaid
             // 
+            this.cbxMaid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxMaid.FormattingEnabled = true;
             this.cbxMaid.Location = new System.Drawing.Point(34, 66);
             this.cbxMaid.Margin = new System.Windows.Forms.Padding(2);
             this.cbxMaid.Name = "cbxMaid";
-            this.cbxMaid.Size = new System.Drawing.Size(140, 21);
+            this.cbxMaid.Size = new System.Drawing.Size(161, 21);
             this.cbxMaid.TabIndex = 7;
             this.cbxMaid.DropDown += new System.EventHandler(this.cbxMaid_DropDown);
             // 

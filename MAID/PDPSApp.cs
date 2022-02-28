@@ -18,6 +18,7 @@ namespace MAID
         public PDPSAppl()
         {
             InitializeComponent();
+            cbxSearch.SelectedIndex = 1;
         }
         ~PDPSAppl()
         {
@@ -79,10 +80,17 @@ namespace MAID
 
         private void btnAddMaid_Click(object sender, EventArgs e)
         {
-            dbconnection.insertMaid(txtMaidName.Text, txtMaidSurname.Text);
-            txtMaidName.Clear();
-            txtMaidSurname.Clear();
-            btnListMaids_Click(sender, e);
+            if(txtMaidName.Text == "" || txtMaidSurname.Text == "")
+            {
+                MessageBox.Show("Please fill maid properties", "Error");
+            }
+            else
+            {
+                dbconnection.insertMaid(txtMaidName.Text, txtMaidSurname.Text);
+                txtMaidName.Clear();
+                txtMaidSurname.Clear();
+                btnListMaids_Click(sender, e);
+            }
         }
 
         private void cbxMaid_DropDown(object sender, EventArgs e)
@@ -121,18 +129,24 @@ namespace MAID
 
         private void btnCleaningAdd_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(cbxMaid.SelectedItem.ToString().Split('-')[0]);
-            dataBase.odaTipi type;
-            if (rBCaring.Checked) { type = dataBase.odaTipi.bakim; rBCaring.Checked = false; }
-            else { type = dataBase.odaTipi.cikis; rbCheckout.Checked = false; }
-            dbconnection.insertTemizlik(id, type, cbxRoom.SelectedItem.ToString(), Convert.ToInt32(cbxRate.SelectedItem.ToString()), txtCleaningYorum.Text);
-            cbxRoom.Text = "";
-            cbxFloor.Text = "";
-            cbxRate.Text = "";
-            cbxRoom.Enabled = false;
-            cbxMaid.Text = "";
-            txtCleaningYorum.Text = "";
-            btnListCln_Click(sender, e);
+            if(cbxMaid.Text == "" || cbxFloor.Text == "" || cbxRoom.Text == "" || cbxRate.Text == "" || rBCaring.Checked == false && rbCheckout.Checked == false)
+                MessageBox.Show("Please fill all properties.", "Error");
+            else
+            {
+                int id = Convert.ToInt32(cbxMaid.SelectedItem.ToString().Split('-')[0]);
+                dataBase.odaTipi type;
+                if (rBCaring.Checked) { type = dataBase.odaTipi.bakim; rBCaring.Checked = false; }
+                else { type = dataBase.odaTipi.cikis; rbCheckout.Checked = false; }
+                dbconnection.insertTemizlik(id, type, cbxRoom.SelectedItem.ToString(), Convert.ToInt32(cbxRate.SelectedItem.ToString()), txtCleaningYorum.Text);
+                cbxRoom.Text = "";
+                cbxFloor.Text = "";
+                cbxRate.Text = "";
+                cbxRoom.Enabled = false;
+                cbxMaid.Text = "";
+                txtCleaningYorum.Text = "";
+                btnListCln_Click(sender, e);
+            }
+           
         }
 
         private void mainTabControl_SelectedIndexChanged(object sender, EventArgs e)
@@ -154,13 +168,18 @@ namespace MAID
 
         private void btnMaidRemove_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete? ", "Maid Delete", MessageBoxButtons.OKCancel);
-            if(dialogResult == DialogResult.OK)
+            if(cbxMaidRemove.Text != "")
             {
-                dbconnection.removeMaid(Convert.ToInt32(cbxMaidRemove.SelectedItem.ToString().Split('-')[0]));
-                cbxMaidRemove.Text = "";
-                btnListMaids_Click(sender, e);
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete? ", "Maid Delete", MessageBoxButtons.OKCancel);
+                if (dialogResult == DialogResult.OK)
+                {
+                    dbconnection.removeMaid(Convert.ToInt32(cbxMaidRemove.SelectedItem.ToString().Split('-')[0]));
+                    cbxMaidRemove.Text = "";
+                    btnListMaids_Click(sender, e);
+                }
             }
+            else
+                MessageBox.Show("Please select maid", "Error");
         }
 
         private void btnListHistory_Click(object sender, EventArgs e)
@@ -194,12 +213,14 @@ namespace MAID
 
             if (cbxSearch.SelectedIndex == 0)
             {
+                txtSearch.Clear();
                 dateSearch.Visible = false;
                 txtSearch.Visible = true;
                 txtSearch.Width = 25;
             }
             else if (cbxSearch.SelectedIndex == 1)
             {
+                txtSearch.Clear();
                 dateSearch.Visible = false;
                 txtSearch.Visible = true;
                 txtSearch.Width = 100;
@@ -214,27 +235,32 @@ namespace MAID
         private void btnSearch_Click(object sender, EventArgs e)
         {
             List<Cleaning> cleanings = null;
-            if (cbxSearch.SelectedIndex == 0)
+            if (txtSearch.Text == "")
+                MessageBox.Show("Please fill search box.", "Error");
+            else
             {
-                cleanings = dbconnection.selectCleaningList(true, id: Convert.ToInt32(txtSearch.Text));
-                
-            }
-            else if (cbxSearch.SelectedIndex == 1)
-            {
-                cleanings = dbconnection.selectCleaningList(true, name: txtSearch.Text);
-            }
-            else if (cbxSearch.SelectedIndex == 2)
-            {
-                cleanings = dbconnection.selectCleaningList(true, date: dateSearch.Text);
-            }
+                if (cbxSearch.SelectedIndex == 0)
+                {
+                    cleanings = dbconnection.selectCleaningList(true, id: Convert.ToInt32(txtSearch.Text));
 
-            lwCleaning.Items.Clear();
-            for (int i = 0; i < cleanings.Count(); i++)
-            {
-                string[] row = { cleanings[i].Maid.Id.ToString(), cleanings[i].Maid.Name, cleanings[i].Maid.Surname,
+                }
+                else if (cbxSearch.SelectedIndex == 1)
+                {
+                    cleanings = dbconnection.selectCleaningList(true, name: txtSearch.Text);
+                }
+                else if (cbxSearch.SelectedIndex == 2)
+                {
+                    cleanings = dbconnection.selectCleaningList(true, date: dateSearch.Text);
+                }
+
+                lwCleaning.Items.Clear();
+                for (int i = 0; i < cleanings.Count(); i++)
+                {
+                    string[] row = { cleanings[i].Maid.Id.ToString(), cleanings[i].Maid.Name, cleanings[i].Maid.Surname,
                     cleanings[i].Type.ToString(), cleanings[i].RoomNumber[0].ToString(), cleanings[i].RoomNumber, cleanings[i].Date, cleanings[i].Rating.ToString(), cleanings[i].CId.ToString()};
-                var satir = new ListViewItem(row);
-                lwCleaning.Items.Add(satir);
+                    var satir = new ListViewItem(row);
+                    lwCleaning.Items.Add(satir);
+                }
             }
         }
 

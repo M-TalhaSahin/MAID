@@ -12,7 +12,7 @@ namespace MAID
         private static string Host = "localhost";
         private static string User = "postgres";
         private static string DBname = "PDPS";
-        private static string Password = "6026";
+        private static string Password = "4458771";
         private static string Port = "5432";
         private static NpgsqlConnection connection;
 
@@ -113,7 +113,7 @@ namespace MAID
             }
             else if(date != "")
             {
-                filter = " and t.date = '" + (date.Split('.')[2] + "-" + date.Split('.')[1] + "-" + date.Split('.')[0] + "'");
+                filter = " and t.date = '" + (date.Split('/')[0] + "-" + date.Split('/')[1] + "-" + date.Split('/')[2] + "'");
             }
             List<Cleaning> cleanings = new List<Cleaning>();
             using (var command = new NpgsqlCommand("select m.maid_id, m.name, m.surname, t.odatipi, t.odano, t.date, t.rate, m.ratingavg, m.roomscleaned, m.salary, t.temizlik_id " +

@@ -154,7 +154,7 @@ namespace MAID
             this.btnCowDisco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCowDisco.Font = new System.Drawing.Font("Perpetua Titling MT", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCowDisco.ForeColor = System.Drawing.Color.Gold;
-            this.btnCowDisco.Location = new System.Drawing.Point(38, 358);
+            this.btnCowDisco.Location = new System.Drawing.Point(33, 358);
             this.btnCowDisco.Name = "btnCowDisco";
             this.btnCowDisco.Size = new System.Drawing.Size(140, 33);
             this.btnCowDisco.TabIndex = 10;

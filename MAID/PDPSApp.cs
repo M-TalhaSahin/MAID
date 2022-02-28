@@ -138,11 +138,11 @@ namespace MAID
                 if (rBCaring.Checked) { type = dataBase.odaTipi.bakim; rBCaring.Checked = false; }
                 else { type = dataBase.odaTipi.cikis; rbCheckout.Checked = false; }
                 dbconnection.insertTemizlik(id, type, cbxRoom.SelectedItem.ToString(), Convert.ToInt32(cbxRate.SelectedItem.ToString()), txtCleaningYorum.Text);
-                cbxRoom.Text = "";
-                cbxFloor.Text = "";
-                cbxRate.Text = "";
+                cbxRoom.SelectedIndex = -1;
+                cbxFloor.SelectedIndex = -1;
+                cbxRate.SelectedIndex = -1;
                 cbxRoom.Enabled = false;
-                cbxMaid.Text = "";
+                cbxMaid.SelectedIndex = -1;
                 txtCleaningYorum.Text = "";
                 btnListCln_Click(sender, e);
             }

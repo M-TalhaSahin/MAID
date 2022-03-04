@@ -16,8 +16,6 @@ namespace MAID
         public SignUp()
         {
             InitializeComponent();
-            txtPassword.PasswordChar = '*';
-            txtRepeat.PasswordChar = '*';
         }
 
         private void btn_Click(object sender, EventArgs e)

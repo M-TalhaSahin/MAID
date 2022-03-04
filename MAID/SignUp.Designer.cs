@@ -54,11 +54,10 @@ namespace MAID
             // 
             // txtName
             // 
-            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtName.Location = new System.Drawing.Point(232, 118);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(100, 15);
+            this.txtName.Size = new System.Drawing.Size(100, 22);
             this.txtName.TabIndex = 1;
             // 
             // lblName
@@ -122,6 +121,7 @@ namespace MAID
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtPassword.Location = new System.Drawing.Point(232, 245);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(100, 22);
             this.txtPassword.TabIndex = 7;
             // 
@@ -140,6 +140,7 @@ namespace MAID
             this.txtRepeat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtRepeat.Location = new System.Drawing.Point(232, 286);
             this.txtRepeat.Name = "txtRepeat";
+            this.txtRepeat.PasswordChar = '*';
             this.txtRepeat.Size = new System.Drawing.Size(100, 22);
             this.txtRepeat.TabIndex = 9;
             this.txtRepeat.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRepeat_KeyDown);

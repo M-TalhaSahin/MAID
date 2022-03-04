@@ -37,6 +37,7 @@ namespace MAID
             this.lblUserName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblExit = new System.Windows.Forms.Label();
+            this.btnSignUp = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,9 +78,9 @@ namespace MAID
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnLogin.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnLogin.Location = new System.Drawing.Point(133, 438);
+            this.btnLogin.Location = new System.Drawing.Point(193, 438);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(192, 33);
+            this.btnLogin.Size = new System.Drawing.Size(132, 33);
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
@@ -118,12 +119,28 @@ namespace MAID
             this.lblExit.Text = "Exit";
             this.lblExit.Click += new System.EventHandler(this.lblExit_Click);
             // 
+            // btnSignUp
+            // 
+            this.btnSignUp.AccessibleDescription = "";
+            this.btnSignUp.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnSignUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSignUp.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnSignUp.Location = new System.Drawing.Point(218, 489);
+            this.btnSignUp.Name = "btnSignUp";
+            this.btnSignUp.Size = new System.Drawing.Size(107, 30);
+            this.btnSignUp.TabIndex = 7;
+            this.btnSignUp.Text = "Sign Up";
+            this.btnSignUp.UseVisualStyleBackColor = false;
+            this.btnSignUp.Click += new System.EventHandler(this.btnSignUp_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(392, 528);
+            this.Controls.Add(this.btnSignUp);
             this.Controls.Add(this.lblExit);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblUserName);
@@ -152,5 +169,6 @@ namespace MAID
         private System.Windows.Forms.Label lblUserName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblExit;
+        private System.Windows.Forms.Button btnSignUp;
     }
 }

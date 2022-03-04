@@ -12,8 +12,8 @@ namespace MAID
         private static string Host = "localhost";
         private static string User = "postgres";
         private static string DBname = "PDPS";
-        private static string Password = "4458771";
-        //private static string Password = "6026";
+       // private static string Password = "4458771";
+        private static string Password = "6026";
         private static string Port = "5432";
         private static NpgsqlConnection connection;
 
@@ -145,6 +145,36 @@ namespace MAID
             string rstring = dr[0].ToString();
             connection.Close();
             return rstring;
+        }
+
+        public void insertUser(string name, string surname, string username,string password)
+        {
+            connection.Open();
+            var command = new NpgsqlCommand(String.Format("insert into tbluser(name, surname, username, password) values('{0}', '{1}', '{2}', '{3}')", name, surname, username, password), connection);
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        public int usernameSearch(string username)
+        {
+            connection.Open();
+            var command = new NpgsqlCommand(String.Format("select count(*) from tbluser where username = '{0}'", username), connection);
+            NpgsqlDataReader dr = command.ExecuteReader();
+            dr.Read();
+            int value = Convert.ToInt32(dr[0].ToString());
+            connection.Close();
+            return value;
+        }
+
+        public int checkUser(string username, string password)
+        {
+            connection.Open();
+            var command = new NpgsqlCommand(String.Format("select count(*) from tbluser where username = '{0}' and password = '{1}'", username, password), connection);
+            NpgsqlDataReader dr = command.ExecuteReader();
+            dr.Read();
+            int value = Convert.ToInt32(dr[0].ToString());
+            connection.Close();
+            return value;
         }
     }
 }

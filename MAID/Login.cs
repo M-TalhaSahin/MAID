@@ -12,19 +12,16 @@ namespace MAID
 {
     public partial class Login : Form
     {
+        private dataBase dbconnection = new dataBase();
         public Login()
         {
             InitializeComponent();
             txtPassword.PasswordChar = '*';
-            txtUserName.Text = "admin";
-            txtPassword.Text = "1234";
         }
-
-      
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if(txtUserName.Text == "admin" && txtPassword.Text == "1234")
+            if(dbconnection.checkUser(txtUserName.Text, txtPassword.Text) == 1)
             {
                 PDPSAppl mainForm = new PDPSAppl();
                 this.Hide();
@@ -33,7 +30,7 @@ namespace MAID
             }
             else
             {
-                MessageBox.Show("The User name or password you entered is incorrect, try again");
+                MessageBox.Show("The User name or password you entered is incorrect, please try again");
                 txtUserName.Clear();
                 txtPassword.Clear();
                 txtUserName.Focus();
@@ -59,6 +56,13 @@ namespace MAID
                 btnLogin_Click(sender, e);
             else if (e.KeyCode == Keys.Escape)
                 Application.Exit();
+        }
+
+        private void btnSignUp_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            SignUp sign = new SignUp();
+            sign.ShowDialog();
         }
     }
 }

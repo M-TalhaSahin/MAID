@@ -54,6 +54,12 @@ namespace MAID
             this.lwmRoomsCleaned = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lwmSalary = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabCleaning = new System.Windows.Forms.TabPage();
+            this.gbPricing = new System.Windows.Forms.GroupBox();
+            this.btnSavePricing = new System.Windows.Forms.Button();
+            this.txtCaring = new System.Windows.Forms.TextBox();
+            this.txtCheckout = new System.Windows.Forms.TextBox();
+            this.lblCaring = new System.Windows.Forms.Label();
+            this.lblCheckout = new System.Windows.Forms.Label();
             this.btnExportCleaning = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.MaskedTextBox();
             this.cbxSearch = new System.Windows.Forms.ComboBox();
@@ -103,21 +109,15 @@ namespace MAID
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.gbPricing = new System.Windows.Forms.GroupBox();
-            this.btnSavePricing = new System.Windows.Forms.Button();
-            this.txtCaring = new System.Windows.Forms.TextBox();
-            this.txtCheckout = new System.Windows.Forms.TextBox();
-            this.lblCaring = new System.Windows.Forms.Label();
-            this.lblCheckout = new System.Windows.Forms.Label();
             this.mainTabControl.SuspendLayout();
             this.tabMaid.SuspendLayout();
             this.gbMaidRemove.SuspendLayout();
             this.gBAddMaid.SuspendLayout();
             this.tabCleaning.SuspendLayout();
+            this.gbPricing.SuspendLayout();
             this.gBCleaning.SuspendLayout();
             this.gBCleaningRB.SuspendLayout();
             this.tabCleaningHistory.SuspendLayout();
-            this.gbPricing.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainTabControl
@@ -380,6 +380,62 @@ namespace MAID
             this.tabCleaning.TabIndex = 1;
             this.tabCleaning.Text = "Cleaning";
             // 
+            // gbPricing
+            // 
+            this.gbPricing.Controls.Add(this.btnSavePricing);
+            this.gbPricing.Controls.Add(this.txtCaring);
+            this.gbPricing.Controls.Add(this.txtCheckout);
+            this.gbPricing.Controls.Add(this.lblCaring);
+            this.gbPricing.Controls.Add(this.lblCheckout);
+            this.gbPricing.Location = new System.Drawing.Point(28, 371);
+            this.gbPricing.Name = "gbPricing";
+            this.gbPricing.Size = new System.Drawing.Size(355, 100);
+            this.gbPricing.TabIndex = 18;
+            this.gbPricing.TabStop = false;
+            this.gbPricing.Text = "Pricing";
+            // 
+            // btnSavePricing
+            // 
+            this.btnSavePricing.Location = new System.Drawing.Point(259, 56);
+            this.btnSavePricing.Name = "btnSavePricing";
+            this.btnSavePricing.Size = new System.Drawing.Size(75, 23);
+            this.btnSavePricing.TabIndex = 4;
+            this.btnSavePricing.Text = "Update";
+            this.btnSavePricing.UseVisualStyleBackColor = true;
+            // 
+            // txtCaring
+            // 
+            this.txtCaring.Location = new System.Drawing.Point(94, 56);
+            this.txtCaring.Name = "txtCaring";
+            this.txtCaring.Size = new System.Drawing.Size(100, 20);
+            this.txtCaring.TabIndex = 3;
+            // 
+            // txtCheckout
+            // 
+            this.txtCheckout.Location = new System.Drawing.Point(94, 20);
+            this.txtCheckout.Name = "txtCheckout";
+            this.txtCheckout.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtCheckout.Size = new System.Drawing.Size(100, 20);
+            this.txtCheckout.TabIndex = 2;
+            // 
+            // lblCaring
+            // 
+            this.lblCaring.AutoSize = true;
+            this.lblCaring.Location = new System.Drawing.Point(20, 56);
+            this.lblCaring.Name = "lblCaring";
+            this.lblCaring.Size = new System.Drawing.Size(37, 13);
+            this.lblCaring.TabIndex = 1;
+            this.lblCaring.Text = "Caring";
+            // 
+            // lblCheckout
+            // 
+            this.lblCheckout.AutoSize = true;
+            this.lblCheckout.Location = new System.Drawing.Point(20, 20);
+            this.lblCheckout.Name = "lblCheckout";
+            this.lblCheckout.Size = new System.Drawing.Size(53, 13);
+            this.lblCheckout.TabIndex = 0;
+            this.lblCheckout.Text = "Checkout";
+            // 
             // btnExportCleaning
             // 
             this.btnExportCleaning.Location = new System.Drawing.Point(990, 12);
@@ -397,6 +453,7 @@ namespace MAID
             this.txtSearch.Size = new System.Drawing.Size(100, 20);
             this.txtSearch.TabIndex = 12;
             this.txtSearch.Visible = false;
+            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
             // cbxSearch
             // 
@@ -835,62 +892,6 @@ namespace MAID
             // 
             this.columnHeader8.Text = "Rating";
             // 
-            // gbPricing
-            // 
-            this.gbPricing.Controls.Add(this.btnSavePricing);
-            this.gbPricing.Controls.Add(this.txtCaring);
-            this.gbPricing.Controls.Add(this.txtCheckout);
-            this.gbPricing.Controls.Add(this.lblCaring);
-            this.gbPricing.Controls.Add(this.lblCheckout);
-            this.gbPricing.Location = new System.Drawing.Point(28, 371);
-            this.gbPricing.Name = "gbPricing";
-            this.gbPricing.Size = new System.Drawing.Size(355, 100);
-            this.gbPricing.TabIndex = 18;
-            this.gbPricing.TabStop = false;
-            this.gbPricing.Text = "Pricing";
-            // 
-            // btnSavePricing
-            // 
-            this.btnSavePricing.Location = new System.Drawing.Point(259, 56);
-            this.btnSavePricing.Name = "btnSavePricing";
-            this.btnSavePricing.Size = new System.Drawing.Size(75, 23);
-            this.btnSavePricing.TabIndex = 4;
-            this.btnSavePricing.Text = "Update";
-            this.btnSavePricing.UseVisualStyleBackColor = true;
-            // 
-            // txtCaring
-            // 
-            this.txtCaring.Location = new System.Drawing.Point(94, 56);
-            this.txtCaring.Name = "txtCaring";
-            this.txtCaring.Size = new System.Drawing.Size(100, 20);
-            this.txtCaring.TabIndex = 3;
-            // 
-            // txtCheckout
-            // 
-            this.txtCheckout.Location = new System.Drawing.Point(94, 20);
-            this.txtCheckout.Name = "txtCheckout";
-            this.txtCheckout.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtCheckout.Size = new System.Drawing.Size(100, 20);
-            this.txtCheckout.TabIndex = 2;
-            // 
-            // lblCaring
-            // 
-            this.lblCaring.AutoSize = true;
-            this.lblCaring.Location = new System.Drawing.Point(20, 56);
-            this.lblCaring.Name = "lblCaring";
-            this.lblCaring.Size = new System.Drawing.Size(37, 13);
-            this.lblCaring.TabIndex = 1;
-            this.lblCaring.Text = "Caring";
-            // 
-            // lblCheckout
-            // 
-            this.lblCheckout.AutoSize = true;
-            this.lblCheckout.Location = new System.Drawing.Point(20, 20);
-            this.lblCheckout.Name = "lblCheckout";
-            this.lblCheckout.Size = new System.Drawing.Size(53, 13);
-            this.lblCheckout.TabIndex = 0;
-            this.lblCheckout.Text = "Checkout";
-            // 
             // PDPSAppl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -914,13 +915,13 @@ namespace MAID
             this.gBAddMaid.PerformLayout();
             this.tabCleaning.ResumeLayout(false);
             this.tabCleaning.PerformLayout();
+            this.gbPricing.ResumeLayout(false);
+            this.gbPricing.PerformLayout();
             this.gBCleaning.ResumeLayout(false);
             this.gBCleaning.PerformLayout();
             this.gBCleaningRB.ResumeLayout(false);
             this.gBCleaningRB.PerformLayout();
             this.tabCleaningHistory.ResumeLayout(false);
-            this.gbPricing.ResumeLayout(false);
-            this.gbPricing.PerformLayout();
             this.ResumeLayout(false);
 
         }

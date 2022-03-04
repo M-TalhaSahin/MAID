@@ -141,6 +141,7 @@ namespace MAID
             this.txtRepeat.Name = "txtRepeat";
             this.txtRepeat.Size = new System.Drawing.Size(100, 22);
             this.txtRepeat.TabIndex = 9;
+            this.txtRepeat.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRepeat_KeyDown);
             // 
             // SignUp
             // 

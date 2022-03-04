@@ -47,5 +47,11 @@ namespace MAID
 
 
         }
+
+        private void txtRepeat_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btn_Click(sender, e);
+        }
     }
 }

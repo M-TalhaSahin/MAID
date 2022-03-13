@@ -88,11 +88,12 @@ namespace MAID
             command = new NpgsqlCommand(String.Format("select ratingavg, roomscleaned, salary from tblmaid where maid_id = {0}", maidID), connection);
             NpgsqlDataReader dr = command.ExecuteReader();
             dr.Read();
-            float newrate;
+            double newrate;
             int roomscleaned = Convert.ToInt32(dr[1].ToString());
 
             if (dr[1].ToString() == "0") newrate = rate;
-            else newrate = ((float.Parse(dr[0].ToString()) * roomscleaned) + rate) / (roomscleaned + 1);
+            else newrate = Math.Round(((float.Parse(dr[0].ToString()) * roomscleaned) + rate) / (roomscleaned + 1), 2);
+            
 
             float miktar = (float.Parse(dr[2].ToString())); // oda ücreti
             connection.Close();

@@ -402,6 +402,7 @@ namespace MAID
             this.btnSavePricing.TabIndex = 4;
             this.btnSavePricing.Text = "Update";
             this.btnSavePricing.UseVisualStyleBackColor = true;
+            this.btnSavePricing.Click += new System.EventHandler(this.btnSavePricing_Click);
             // 
             // txtCaring
             // 
@@ -409,6 +410,7 @@ namespace MAID
             this.txtCaring.Name = "txtCaring";
             this.txtCaring.Size = new System.Drawing.Size(100, 20);
             this.txtCaring.TabIndex = 3;
+            this.txtCaring.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtCheckout
             // 

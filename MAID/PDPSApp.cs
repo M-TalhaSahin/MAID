@@ -330,5 +330,18 @@ namespace MAID
             if (e.KeyCode == Keys.Enter)
                 btnSearch_Click(sender, e);
         }
+
+        private void btnSavePricing_Click(object sender, EventArgs e)
+        {
+            if (txtCaring.Text == "" || txtCheckout.Text == "")
+                MessageBox.Show("Please fill all properties", "ERROR");
+            else
+            {
+                dbconnection.updatePrice(Convert.ToDouble(txtCheckout.Text), Convert.ToDouble(txtCaring.Text));
+                MessageBox.Show("Price values succesfully updated");
+                txtCaring.Clear();
+                txtCheckout.Clear();
+            }
+        }
     }
 }

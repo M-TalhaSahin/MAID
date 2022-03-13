@@ -78,6 +78,9 @@ namespace MAID
         }
         public void insertTemizlik(int maidID, odaTipi odaTipi, string roomNumer, int rate, string yorum)
         {
+            float caring = selectCaring();
+            float checkout = selectCheckout();
+
             connection.Open();
             var command = new NpgsqlCommand(String.Format("insert into tbltemizlikkayit(maid_id, odatipi, date, odano, rate, yorum) values({0}, CAST({1} AS bit), NOW(), {2}, {3}, '{4}')", 
                 maidID, (int)odaTipi, roomNumer, rate, yorum), connection);
@@ -87,14 +90,16 @@ namespace MAID
             dr.Read();
             float newrate;
             int roomscleaned = Convert.ToInt32(dr[1].ToString());
+
             if (dr[1].ToString() == "0") newrate = rate;
             else newrate = ((float.Parse(dr[0].ToString()) * roomscleaned) + rate) / (roomscleaned + 1);
+
             float miktar = (float.Parse(dr[2].ToString())); // oda ücreti
             connection.Close();
             connection.Open();
 
-            if (odaTipi == dataBase.odaTipi.bakim) miktar += 5;
-            else miktar += 5;
+            if (odaTipi == dataBase.odaTipi.bakim) miktar += caring;
+            else miktar += checkout;
 
 
             command = new NpgsqlCommand(String.Format("update tblmaid set roomscleaned = {0}, ratingavg = {1}, salary = {2} where maid_id = {3}", roomscleaned + 1, newrate, miktar, maidID), connection);
@@ -173,6 +178,36 @@ namespace MAID
             NpgsqlDataReader dr = command.ExecuteReader();
             dr.Read();
             int value = Convert.ToInt32(dr[0].ToString());
+            connection.Close();
+            return value;
+        }
+
+        public void updatePrice(double checkout, double caring)
+        {
+            connection.Open();
+            var command = new NpgsqlCommand(String.Format("update tblprice set checkout={0}, caring={1} where price_id=1", checkout, caring), connection);
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        public float selectCheckout()
+        {
+            connection.Open();
+            var command = new NpgsqlCommand(String.Format("select checkout from tblprice where price_id=1"), connection);
+            NpgsqlDataReader dr = command.ExecuteReader();
+            dr.Read();
+            float value = float.Parse(dr[0].ToString());
+            connection.Close();
+            return value;
+        }
+
+        public float selectCaring()
+        {
+            connection.Open();
+            var command = new NpgsqlCommand(String.Format("select caring from tblprice where price_id=1"), connection);
+            NpgsqlDataReader dr = command.ExecuteReader();
+            dr.Read();
+            float value = float.Parse(dr[0].ToString());
             connection.Close();
             return value;
         }

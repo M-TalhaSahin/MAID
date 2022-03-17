@@ -12,8 +12,8 @@ namespace MAID
         private static string Host = "localhost";
         private static string User = "postgres";
         private static string DBname = "PDPS";
-       // private static string Password = "4458771";
-        private static string Password = "6026";
+        private static string Password = "by145278";
+        //private static string Password = "4458771";
         private static string Port = "5432";
         private static NpgsqlConnection connection;
 
@@ -107,7 +107,7 @@ namespace MAID
             command.ExecuteNonQuery();
             connection.Close();
         }
-        public List<Cleaning> selectCleaningList(bool isActive, int id = -1, string name = "", string date = "")
+        public List<Cleaning> selectCleaningList(bool isActive, int id = -1, string name = "", string date = "", string rtype = "")
         {
             string filter = "";
             if(id != -1)
@@ -120,7 +120,18 @@ namespace MAID
             }
             else if(date != "")
             {
-                filter = " and t.date = '" + (date.Split('/')[0] + "-" + date.Split('/')[1] + "-" + date.Split('/')[2] + "'");
+                filter = " and t.date = TO_DATE('" + (date.Split('/')[0] + "-" + date.Split('/')[1] + "-" + date.Split('/')[2] + "', 'MM-dd-yyyy')");
+            }
+            else if(rtype != "")
+            {
+                if(rtype == "checkout")
+                {
+                    filter = " and t.odatipi = CAST(0 AS bit)";
+                }
+                else if(rtype == "care")
+                {
+                    filter = " and t.odatipi = CAST(1 AS bit)";
+                }
             }
             List<Cleaning> cleanings = new List<Cleaning>();
             using (var command = new NpgsqlCommand("select m.maid_id, m.name, m.surname, t.odatipi, t.odano, t.date, t.rate, m.ratingavg, m.roomscleaned, m.salary, t.temizlik_id " +

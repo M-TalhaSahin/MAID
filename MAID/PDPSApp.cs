@@ -216,6 +216,7 @@ namespace MAID
                 txtSearch.Clear();
                 dateSearch.Visible = false;
                 txtSearch.Visible = true;
+                gBsearchCC.Visible = false;
                 txtSearch.Width = 25;
             }
             else if (cbxSearch.SelectedIndex == 1)
@@ -223,11 +224,22 @@ namespace MAID
                 txtSearch.Clear();
                 dateSearch.Visible = false;
                 txtSearch.Visible = true;
+                gBsearchCC.Visible = false;
                 txtSearch.Width = 100;
             }
             else if (cbxSearch.SelectedIndex == 2)
             {
                 dateSearch.Visible = true;
+                txtSearch.Visible = false;
+                gBsearchCC.Visible = false;
+            }
+            else if (cbxSearch.SelectedIndex == 3)
+            {
+                srcRBCheckout.Checked = false;
+                srcRbCare.Checked = false;
+                txtSearch.Clear();
+                gBsearchCC.Visible = true;
+                dateSearch.Visible = false;
                 txtSearch.Visible = false;
             }
         }
@@ -235,8 +247,12 @@ namespace MAID
         private void btnSearch_Click(object sender, EventArgs e)
         {
             List<Cleaning> cleanings = null;
-            if (txtSearch.Text == "")
+            if (txtSearch.Text == "" && (cbxSearch.SelectedIndex == 0 || cbxSearch.SelectedIndex == 1))
                 MessageBox.Show("Please fill search box.", "Error");
+            if(srcRbCare.Checked == false && srcRBCheckout.Checked == false && cbxSearch.SelectedIndex == 3)
+            {
+                MessageBox.Show("Please select a type.", "Error");
+            }
             else
             {
                 if (cbxSearch.SelectedIndex == 0)
@@ -251,6 +267,17 @@ namespace MAID
                 else if (cbxSearch.SelectedIndex == 2)
                 {
                     cleanings = dbconnection.selectCleaningList(true, date: dateSearch.Text);
+                }
+                else if (cbxSearch.SelectedIndex == 3)
+                {
+                    if (srcRBCheckout.Checked)
+                    {
+                        cleanings = dbconnection.selectCleaningList(true, rtype: "checkout");
+                    }
+                    else if (srcRbCare.Checked)
+                    {
+                        cleanings = dbconnection.selectCleaningList(true, rtype: "care");
+                    }
                 }
 
                 lwCleaning.Items.Clear();

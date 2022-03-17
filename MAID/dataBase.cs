@@ -82,8 +82,8 @@ namespace MAID
             float checkout = selectCheckout();
 
             connection.Open();
-            var command = new NpgsqlCommand(String.Format("insert into tbltemizlikkayit(maid_id, odatipi, date, odano, rate, yorum) values({0}, CAST({1} AS bit), NOW(), {2}, {3}, '{4}')", 
-                maidID, (int)odaTipi, roomNumer, rate, yorum), connection);
+            var command = new NpgsqlCommand(String.Format("insert into tbltemizlikkayit(maid_id, odatipi, date, odano, rate, yorum) values({0}, CAST({1} AS bit), '{5}', {2}, {3}, '{4}')", 
+                maidID, (int)odaTipi, roomNumer, rate, yorum, DateTime.Now.ToString("yyyy-MM-dd")), connection);
             command.ExecuteNonQuery();
             command = new NpgsqlCommand(String.Format("select ratingavg, roomscleaned, salary from tblmaid where maid_id = {0}", maidID), connection);
             NpgsqlDataReader dr = command.ExecuteReader();
@@ -103,7 +103,7 @@ namespace MAID
             else miktar += checkout;
 
 
-            command = new NpgsqlCommand(String.Format("update tblmaid set roomscleaned = {0}, ratingavg = {1}, salary = {2} where maid_id = {3}", roomscleaned + 1, newrate, miktar, maidID), connection);
+            command = new NpgsqlCommand(String.Format("update tblmaid set roomscleaned = {0}, ratingavg = {1}, salary = {2} where maid_id = {3}", roomscleaned + 1, newrate.ToString().Replace(",","."), miktar, maidID), connection);
             command.ExecuteNonQuery();
             connection.Close();
         }

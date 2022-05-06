@@ -64,5 +64,11 @@ namespace MAID
             SignUp sign = new SignUp();
             sign.ShowDialog();
         }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            txtUserName.Text = "hcan";
+            txtPassword.Text = "123";
+        }
     }
 }

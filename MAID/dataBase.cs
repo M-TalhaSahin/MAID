@@ -12,8 +12,9 @@ namespace MAID
         private static string Host = "localhost";
         private static string User = "postgres";
         private static string DBname = "PDPS";
-        private static string Password = "by145278";
+        private static string Password = "6026";
         //private static string Password = "4458771";
+        //private static string Password = "by145278";
         private static string Port = "5432";
         private static NpgsqlConnection connection;
 
@@ -21,6 +22,16 @@ namespace MAID
         {
             cikis = 0,
             bakim = 1
+        }
+        public struct CalcResult
+        {
+            public double result;
+            public DateTime date;
+            public CalcResult(double _result, DateTime _date)
+            {
+                result = _result;
+                date = _date;
+            }
         }
 
         public dataBase()
@@ -223,5 +234,57 @@ namespace MAID
             connection.Close();
             return value;
         }
+
+        public void insertCalculation(string type, double result)
+        {
+            connection.Open();
+            var command = new NpgsqlCommand(String.Format("insert into public.\"tblCalculation\"(type, result, date) values('{0}', {1}, '{2}')", 
+                type, result.ToString().Replace(",", "."), DateTime.Now.ToString("yyyy-MM-dd")), connection);
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+        
+        public List<CalcResult> selectCalculation(string type, DateTime startDate, DateTime endDate)
+        {
+            connection.Open();
+            List<CalcResult> results = new List<CalcResult>();
+            var command = new NpgsqlCommand(String.Format("select result, date from public.\"tblCalculation\" where type='{0}' and date between '{1}' and '{2}'",
+                type, startDate.ToShortDateString(), endDate.ToShortDateString()), connection);
+            NpgsqlDataReader dr = command.ExecuteReader();
+            while (dr.Read())
+            {
+                CalcResult res = new CalcResult(float.Parse(dr[0].ToString()), Convert.ToDateTime(dr[1].ToString()));
+                results.Add(res);
+            }
+            connection.Close();
+            return results;
+        }
+
+        public void insertBCVCalc(int id, double result)
+        {
+            connection.Open();
+            var command = new NpgsqlCommand(String.Format("insert into public.\"tblBCV\"(maidid, result, date) values('{0}', {1}, '{2}')",
+               id, result.ToString().Replace(",", "."), DateTime.Now.ToString("yyyy-MM-dd")), connection);
+            command.ExecuteNonQuery();
+            connection.Close();
+
+        }
+
+        public List<CalcResult> selectBCV(int id, DateTime startDate, DateTime endDate)
+        {
+            connection.Open();
+            List<CalcResult> results = new List<CalcResult>();
+            var command = new NpgsqlCommand(String.Format("select result, date from public.\"tblBCV\" where maidid ='{0}' and date between '{1}' and '{2}'",
+                id, startDate.ToShortDateString(), endDate.ToShortDateString()), connection);
+            NpgsqlDataReader dr = command.ExecuteReader();
+            while (dr.Read())
+            {
+                CalcResult res = new CalcResult(float.Parse(dr[0].ToString()), Convert.ToDateTime(dr[1].ToString()));
+                results.Add(res);
+            }
+            connection.Close();
+            return results;
+        }
+
     }
 }

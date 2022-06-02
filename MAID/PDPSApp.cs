@@ -425,7 +425,11 @@ namespace MAID
             if(txtGSVResult.Text == "")
                 MessageBox.Show("Please calculate first.");
             else
+            {
                 dbconnection.insertCalculation("GSV", float.Parse(txtGSVResult.Text));
+                MessageBox.Show("Saved.", "Save", MessageBoxButtons.OK);
+            }
+             
         }
 
         private void btnGSVRef_Click(object sender, EventArgs e)
@@ -484,6 +488,7 @@ namespace MAID
             {
                 int id = Convert.ToInt32(cbxBCVemployee.SelectedItem.ToString().Split('-')[0]);
                 dbconnection.insertBCVCalc(id, float.Parse(txtBCVresult.Text));
+                 MessageBox.Show("Saved.", "Save", MessageBoxButtons.OK);
             }
         }
 
@@ -605,7 +610,11 @@ namespace MAID
             if(txtEASOResult.Text == "")
                 MessageBox.Show("Please calculate first.");
             else
+            {
                 dbconnection.insertCalculation("EASO", float.Parse(txtEASOResult.Text));
+                MessageBox.Show("Saved.", "Save", MessageBoxButtons.OK);
+            }
+                
         }
 
         private void btnKKOCalc_Click(object sender, EventArgs e)
@@ -634,7 +643,11 @@ namespace MAID
             if(txtKKOResult.Text == "")
                 MessageBox.Show("Please calculate first.");
             else
+            {
                 dbconnection.insertCalculation("KKO", float.Parse(txtKKOResult.Text));
+                MessageBox.Show("Saved.", "Save", MessageBoxButtons.OK);
+            }
+                
         }
 
         private void btnKKOShow_Click(object sender, EventArgs e)

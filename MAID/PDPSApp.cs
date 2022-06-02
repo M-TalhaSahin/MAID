@@ -443,8 +443,9 @@ namespace MAID
             chart1.Series["GSV"].BorderWidth = 2;
             chart1.ChartAreas[0].AxisX.Title = "DATE";
             chart1.ChartAreas[0].AxisY.Title = "VALUE";
+            chart1.Titles[0].Text = "Genel Süreç Verimliliği";
         }
-
+   
         private void cbxEmployee_DropDown(object sender, EventArgs e)
         {
             List<Maid> maidList = dbconnection.selectMaidList(true);
@@ -488,19 +489,26 @@ namespace MAID
 
         private void btnBCVshow_Click(object sender, EventArgs e)
         {
-            List<dataBase.CalcResult> resultList = dbconnection.selectBCV(Convert.ToInt32(cbxBCVemployee.SelectedItem.ToString().Split('-')[0]), dtpBCVstart.Value, dtpBCVend.Value);
-            chart2.Series.Clear();
-            chart2.Series.Add("GSV");
-            chart2.Series["GSV"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            for (int i = 0; i < resultList.Count; i++)
+            if (cbxBCVemployee.Text == "")
+                MessageBox.Show("Please select an employee.");
+            else
             {
-                chart2.Series["GSV"].Points.AddXY(i, resultList[i].result);
-                chart2.Series["GSV"].Points[i].AxisLabel = resultList[i].date.ToShortDateString();
+                List<dataBase.CalcResult> resultList = dbconnection.selectBCV(Convert.ToInt32(cbxBCVemployee.SelectedItem.ToString().Split('-')[0]), dtpBCVstart.Value, dtpBCVend.Value);
+                chart2.Series.Clear();
+                chart2.Series.Add("BCV");
+                chart2.Series["BCV"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+                for (int i = 0; i < resultList.Count; i++)
+                {
+                    chart2.Series["BCV"].Points.AddXY(i, resultList[i].result);
+                    chart2.Series["BCV"].Points[i].AxisLabel = resultList[i].date.ToShortDateString();
+                }
+                chart2.ChartAreas[0].AxisX.LabelStyle.Angle = -45;
+                chart2.Series["BCV"].BorderWidth = 2;
+                chart2.ChartAreas[0].AxisX.Title = "DATE";
+                chart2.ChartAreas[0].AxisY.Title = "VALUE";
+                
             }
-            chart2.ChartAreas[0].AxisX.LabelStyle.Angle = -45;
-            chart2.Series["GSV"].BorderWidth = 2;
-            chart2.ChartAreas[0].AxisX.Title = "DATE";
-            chart2.ChartAreas[0].AxisY.Title = "VALUE";
+            chart2.Titles[0].Text = "Bireysel Çalışan Verimliliği";
         }
 
         private void btnIGVCalc_Click(object sender, EventArgs e)
@@ -528,7 +536,11 @@ namespace MAID
             if(txtIGVRes.Text == "")
                 MessageBox.Show("Please calculate first.");
             else
+            {
                 dbconnection.insertCalculation("IGV", float.Parse(txtIGVRes.Text));
+                MessageBox.Show("Saved.","Save", MessageBoxButtons.OK);
+            }
+               
         }
 
         private void btnIGVShow_Click(object sender, EventArgs e)
@@ -546,6 +558,7 @@ namespace MAID
             chart3.Series["IGV"].BorderWidth = 2;
             chart3.ChartAreas[0].AxisX.Title = "DATE";
             chart3.ChartAreas[0].AxisY.Title = "VALUE";
+            chart3.Titles[0].Text = "İş Gücü Verimliliği";
         }
 
         private void btnEASOCalc_Click(object sender, EventArgs e)
@@ -584,6 +597,7 @@ namespace MAID
             chart4.Series["EASO"].BorderWidth = 2;
             chart4.ChartAreas[0].AxisX.Title = "DATE";
             chart4.ChartAreas[0].AxisY.Title = "VALUE";
+            chart4.Titles[0].Text = "Etkili Adam Saatlerin Toplam Adam Saate Oranı";
         }
 
         private void btnEASOSave_Click(object sender, EventArgs e)
@@ -638,6 +652,7 @@ namespace MAID
             chart5.Series["KKO"].BorderWidth = 2;
             chart5.ChartAreas[0].AxisX.Title = "DATE";
             chart5.ChartAreas[0].AxisY.Title = "VALUE";
+            chart5.Titles[0].Text = "Kapasite Kullanım Oranı";
         }
         private void btnSumShow_Click(object sender, EventArgs e)
         {
@@ -662,6 +677,10 @@ namespace MAID
             chart6.Series["EASO"].BorderWidth = 2;
             resultSum.Add(dbconnection.selectCalculation("KKO", dtpSumStart.Value, dtpSumEnd.Value));
             chart6.Series["KKO"].BorderWidth = 2;
+            chart6.Titles[0].Text = "Summary";
+            chart6.ChartAreas[0].AxisX.Title = "DATE";
+            chart6.ChartAreas[0].AxisY.Title = "VALUE";
+
 
             for (int i = 0; i < resultSum.Count; i++)
             {
@@ -676,6 +695,27 @@ namespace MAID
         }
 
         private void tabEASO_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnClearSalary_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure to clear salary data?","Salary Clear", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                if (lwMaid.SelectedItems.Count != 0)
+                {
+                    for (int i = 0; i < lwMaid.SelectedItems.Count; i++)
+                    {
+                        lwMaid.SelectedItems[i].SubItems[5].Text = "0";
+                        dbconnection.ClearSalary(Convert.ToInt32(lwMaid.SelectedItems[i].SubItems[0].Text));
+                    }
+                }
+            }
+        }
+
+        private void lwMaid_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

@@ -34,28 +34,34 @@ namespace MAID
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, 1D);
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(2D, 2D);
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, 1D);
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint4 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, 1D);
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint5 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(2D, 2D);
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint6 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, 1D);
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint7 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(2D, 2D);
+            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint8 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, 1D);
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint9 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(2D, 2D);
+            System.Windows.Forms.DataVisualization.Charting.Title title5 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title6 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PDPSAppl));
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.tabMaid = new System.Windows.Forms.TabPage();
@@ -243,6 +249,7 @@ namespace MAID
             this.label38 = new System.Windows.Forms.Label();
             this.dtpSumEnd = new System.Windows.Forms.DateTimePicker();
             this.chart6 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.btnClearSalary = new System.Windows.Forms.Button();
             this.mainTabControl.SuspendLayout();
             this.tabMaid.SuspendLayout();
             this.gbMaidRemove.SuspendLayout();
@@ -297,6 +304,7 @@ namespace MAID
             // tabMaid
             // 
             this.tabMaid.BackColor = System.Drawing.Color.LightSlateGray;
+            this.tabMaid.Controls.Add(this.btnClearSalary);
             this.tabMaid.Controls.Add(this.btnCowDisco);
             this.tabMaid.Controls.Add(this.btnMaidExport);
             this.tabMaid.Controls.Add(this.gbMaidRemove);
@@ -490,6 +498,7 @@ namespace MAID
             this.lwMaid.TabIndex = 3;
             this.lwMaid.UseCompatibleStateImageBehavior = false;
             this.lwMaid.View = System.Windows.Forms.View.Details;
+            this.lwMaid.SelectedIndexChanged += new System.EventHandler(this.lwMaid_SelectedIndexChanged);
             // 
             // lwmID
             // 
@@ -1219,6 +1228,8 @@ namespace MAID
             this.chart1.Size = new System.Drawing.Size(1041, 341);
             this.chart1.TabIndex = 5;
             this.chart1.Text = "chart1";
+            title1.Name = "Title1";
+            this.chart1.Titles.Add(title1);
             // 
             // groupBox1
             // 
@@ -1370,6 +1381,8 @@ namespace MAID
             this.chart2.Size = new System.Drawing.Size(1041, 341);
             this.chart2.TabIndex = 13;
             this.chart2.Text = "chart2";
+            title2.Name = "Title1";
+            this.chart2.Titles.Add(title2);
             // 
             // gbxBCVsearch
             // 
@@ -1601,6 +1614,8 @@ namespace MAID
             this.chart3.Size = new System.Drawing.Size(1041, 341);
             this.chart3.TabIndex = 14;
             this.chart3.Text = "chart3";
+            title3.Name = "Title1";
+            this.chart3.Titles.Add(title3);
             // 
             // groupBox5
             // 
@@ -1834,6 +1849,8 @@ namespace MAID
             this.chart4.Size = new System.Drawing.Size(1041, 341);
             this.chart4.TabIndex = 15;
             this.chart4.Text = "chart4";
+            title4.Name = "Title1";
+            this.chart4.Titles.Add(title4);
             // 
             // groupBox7
             // 
@@ -2047,6 +2064,8 @@ namespace MAID
             this.chart5.Size = new System.Drawing.Size(1041, 341);
             this.chart5.TabIndex = 18;
             this.chart5.Text = "chart5";
+            title5.Name = "Title1";
+            this.chart5.Titles.Add(title5);
             // 
             // groupBox8
             // 
@@ -2298,6 +2317,18 @@ namespace MAID
             this.chart6.Size = new System.Drawing.Size(1047, 429);
             this.chart6.TabIndex = 0;
             this.chart6.Text = "chart6";
+            title6.Name = "Title1";
+            this.chart6.Titles.Add(title6);
+            // 
+            // btnClearSalary
+            // 
+            this.btnClearSalary.Location = new System.Drawing.Point(858, 21);
+            this.btnClearSalary.Name = "btnClearSalary";
+            this.btnClearSalary.Size = new System.Drawing.Size(131, 23);
+            this.btnClearSalary.TabIndex = 11;
+            this.btnClearSalary.Text = "Clear Selected Salary";
+            this.btnClearSalary.UseVisualStyleBackColor = true;
+            this.btnClearSalary.Click += new System.EventHandler(this.btnClearSalary_Click);
             // 
             // PDPSAppl
             // 
@@ -2561,6 +2592,7 @@ namespace MAID
         private System.Windows.Forms.DateTimePicker dtpSumStart;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.DateTimePicker dtpSumEnd;
+        private System.Windows.Forms.Button btnClearSalary;
     }
 }
 

@@ -286,5 +286,13 @@ namespace MAID
             return results;
         }
 
+        public void ClearSalary(int id)
+        {
+            connection.Open();
+            var command = new NpgsqlCommand(String.Format("update tblmaid set salary = 0 where maid_id = {0}", id), connection);
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+
     }
 }

@@ -12,9 +12,9 @@ namespace MAID
         private static string Host = "localhost";
         private static string User = "postgres";
         private static string DBname = "PDPS";
-        private static string Password = "6026";
+        //private static string Password = "6026";
         //private static string Password = "4458771";
-        //private static string Password = "by145278";
+        private static string Password = "by145278";
         private static string Port = "5432";
         private static NpgsqlConnection connection;
 
@@ -49,15 +49,7 @@ namespace MAID
             connection = new NpgsqlConnection(connString);
             
         }
-        public void clearDB()
-        {
-            connection.Open();
-            var command = new NpgsqlCommand(String.Format("delete from tbltemizlikkayit"), connection);
-            command.ExecuteNonQuery();
-            command = new NpgsqlCommand(String.Format("delete from tblmaid"), connection);
-            command.ExecuteNonQuery();
-            connection.Close();
-        }
+     
         public void insertMaid(string name, string surname)
         {
             connection.Open();

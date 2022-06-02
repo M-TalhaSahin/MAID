@@ -65,14 +65,12 @@ namespace MAID
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PDPSAppl));
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.tabMaid = new System.Windows.Forms.TabPage();
-            this.btnCowDisco = new System.Windows.Forms.Button();
             this.btnMaidExport = new System.Windows.Forms.Button();
             this.gbMaidRemove = new System.Windows.Forms.GroupBox();
             this.cbxMaidRemove = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnMaidRemove = new System.Windows.Forms.Button();
             this.btnListMaids = new System.Windows.Forms.Button();
-            this.txtOutput = new System.Windows.Forms.TextBox();
             this.gBAddMaid = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -250,6 +248,10 @@ namespace MAID
             this.dtpSumEnd = new System.Windows.Forms.DateTimePicker();
             this.chart6 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnClearSalary = new System.Windows.Forms.Button();
+            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lblMaid = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
             this.mainTabControl.SuspendLayout();
             this.tabMaid.SuspendLayout();
             this.gbMaidRemove.SuspendLayout();
@@ -305,11 +307,9 @@ namespace MAID
             // 
             this.tabMaid.BackColor = System.Drawing.Color.LightSlateGray;
             this.tabMaid.Controls.Add(this.btnClearSalary);
-            this.tabMaid.Controls.Add(this.btnCowDisco);
             this.tabMaid.Controls.Add(this.btnMaidExport);
             this.tabMaid.Controls.Add(this.gbMaidRemove);
             this.tabMaid.Controls.Add(this.btnListMaids);
-            this.tabMaid.Controls.Add(this.txtOutput);
             this.tabMaid.Controls.Add(this.gBAddMaid);
             this.tabMaid.Controls.Add(this.lwMaid);
             this.tabMaid.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -320,22 +320,6 @@ namespace MAID
             this.tabMaid.Size = new System.Drawing.Size(1090, 526);
             this.tabMaid.TabIndex = 0;
             this.tabMaid.Text = "Maid";
-            // 
-            // btnCowDisco
-            // 
-            this.btnCowDisco.BackColor = System.Drawing.Color.Plum;
-            this.btnCowDisco.FlatAppearance.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnCowDisco.FlatAppearance.BorderSize = 3;
-            this.btnCowDisco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCowDisco.Font = new System.Drawing.Font("Perpetua Titling MT", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCowDisco.ForeColor = System.Drawing.Color.Gold;
-            this.btnCowDisco.Location = new System.Drawing.Point(33, 358);
-            this.btnCowDisco.Name = "btnCowDisco";
-            this.btnCowDisco.Size = new System.Drawing.Size(140, 33);
-            this.btnCowDisco.TabIndex = 10;
-            this.btnCowDisco.Text = "DISCO COW";
-            this.btnCowDisco.UseVisualStyleBackColor = false;
-            this.btnCowDisco.Click += new System.EventHandler(this.btnCowDisco_Click);
             // 
             // btnMaidExport
             // 
@@ -352,7 +336,7 @@ namespace MAID
             this.gbMaidRemove.Controls.Add(this.cbxMaidRemove);
             this.gbMaidRemove.Controls.Add(this.label8);
             this.gbMaidRemove.Controls.Add(this.btnMaidRemove);
-            this.gbMaidRemove.Location = new System.Drawing.Point(33, 206);
+            this.gbMaidRemove.Location = new System.Drawing.Point(33, 276);
             this.gbMaidRemove.Margin = new System.Windows.Forms.Padding(2);
             this.gbMaidRemove.Name = "gbMaidRemove";
             this.gbMaidRemove.Padding = new System.Windows.Forms.Padding(2);
@@ -403,17 +387,6 @@ namespace MAID
             this.btnListMaids.Text = "List";
             this.btnListMaids.UseVisualStyleBackColor = true;
             this.btnListMaids.Click += new System.EventHandler(this.btnListMaids_Click);
-            // 
-            // txtOutput
-            // 
-            this.txtOutput.BackColor = System.Drawing.Color.MediumAquamarine;
-            this.txtOutput.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOutput.Location = new System.Drawing.Point(33, 396);
-            this.txtOutput.Margin = new System.Windows.Forms.Padding(2);
-            this.txtOutput.Multiline = true;
-            this.txtOutput.Name = "txtOutput";
-            this.txtOutput.Size = new System.Drawing.Size(356, 109);
-            this.txtOutput.TabIndex = 8;
             // 
             // gBAddMaid
             // 
@@ -964,6 +937,8 @@ namespace MAID
             // tabCleaningHistory
             // 
             this.tabCleaningHistory.BackColor = System.Drawing.Color.LightSlateGray;
+            this.tabCleaningHistory.Controls.Add(this.label39);
+            this.tabCleaningHistory.Controls.Add(this.lblMaid);
             this.tabCleaningHistory.Controls.Add(this.btnListMaidHistory);
             this.tabCleaningHistory.Controls.Add(this.lwMaidHistory);
             this.tabCleaningHistory.Controls.Add(this.btnListCleaningHistory);
@@ -995,7 +970,8 @@ namespace MAID
             this.columnHeader10,
             this.columnHeader11,
             this.columnHeader12,
-            this.columnHeader13});
+            this.columnHeader13,
+            this.columnHeader15});
             this.lwMaidHistory.FullRowSelect = true;
             this.lwMaidHistory.GridLines = true;
             this.lwMaidHistory.HideSelection = false;
@@ -1011,6 +987,7 @@ namespace MAID
             // columnHeader9
             // 
             this.columnHeader9.Text = "ID";
+            this.columnHeader9.Width = 27;
             // 
             // columnHeader10
             // 
@@ -1020,7 +997,7 @@ namespace MAID
             // columnHeader11
             // 
             this.columnHeader11.Text = "Surname";
-            this.columnHeader11.Width = 145;
+            this.columnHeader11.Width = 102;
             // 
             // columnHeader12
             // 
@@ -1053,7 +1030,8 @@ namespace MAID
             this.columnHeader5,
             this.columnHeader6,
             this.columnHeader7,
-            this.columnHeader8});
+            this.columnHeader8,
+            this.columnHeader14});
             this.lwCleaningHistory.FullRowSelect = true;
             this.lwCleaningHistory.GridLines = true;
             this.lwCleaningHistory.HideSelection = false;
@@ -2330,6 +2308,35 @@ namespace MAID
             this.btnClearSalary.UseVisualStyleBackColor = true;
             this.btnClearSalary.Click += new System.EventHandler(this.btnClearSalary_Click);
             // 
+            // columnHeader14
+            // 
+            this.columnHeader14.Text = "CID";
+            // 
+            // columnHeader15
+            // 
+            this.columnHeader15.Text = "Salary";
+            this.columnHeader15.Width = 72;
+            // 
+            // lblMaid
+            // 
+            this.lblMaid.AutoSize = true;
+            this.lblMaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblMaid.Location = new System.Drawing.Point(128, 15);
+            this.lblMaid.Name = "lblMaid";
+            this.lblMaid.Size = new System.Drawing.Size(43, 20);
+            this.lblMaid.TabIndex = 15;
+            this.lblMaid.Text = "Maid";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label39.Location = new System.Drawing.Point(622, 15);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(71, 20);
+            this.label39.TabIndex = 16;
+            this.label39.Text = "Cleaning";
+            // 
             // PDPSAppl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2349,7 +2356,6 @@ namespace MAID
             this.Load += new System.EventHandler(this.PDPSApp_Load);
             this.mainTabControl.ResumeLayout(false);
             this.tabMaid.ResumeLayout(false);
-            this.tabMaid.PerformLayout();
             this.gbMaidRemove.ResumeLayout(false);
             this.gbMaidRemove.PerformLayout();
             this.gBAddMaid.ResumeLayout(false);
@@ -2365,6 +2371,7 @@ namespace MAID
             this.gBCleaningRB.ResumeLayout(false);
             this.gBCleaningRB.PerformLayout();
             this.tabCleaningHistory.ResumeLayout(false);
+            this.tabCleaningHistory.PerformLayout();
             this.tabCalculations.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabGSV.ResumeLayout(false);
@@ -2427,7 +2434,6 @@ namespace MAID
         private System.Windows.Forms.GroupBox gBCleaningRB;
         private System.Windows.Forms.RadioButton rBCaring;
         private System.Windows.Forms.RadioButton rbCheckout;
-        private System.Windows.Forms.TextBox txtOutput;
         private System.Windows.Forms.Button btnListMaids;
         private System.Windows.Forms.ColumnHeader lwmID;
         private System.Windows.Forms.ColumnHeader lwmName;
@@ -2478,7 +2484,6 @@ namespace MAID
         private System.Windows.Forms.Button btnExportCleaning;
         private System.Windows.Forms.ComboBox cbxRate;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btnCowDisco;
         private System.Windows.Forms.GroupBox gbPricing;
         private System.Windows.Forms.Button btnSavePricing;
         private System.Windows.Forms.TextBox txtCaring;
@@ -2593,6 +2598,10 @@ namespace MAID
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.DateTimePicker dtpSumEnd;
         private System.Windows.Forms.Button btnClearSalary;
+        private System.Windows.Forms.ColumnHeader columnHeader14;
+        private System.Windows.Forms.ColumnHeader columnHeader15;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label lblMaid;
     }
 }
 

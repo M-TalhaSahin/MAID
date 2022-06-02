@@ -407,17 +407,25 @@ namespace MAID
 
         private void btnGSVCalc_Click(object sender, EventArgs e)
         {
-            double x, y, z, r;
-            x = float.Parse(txtGSVCheckOut.Text) * 26.76;
-            y = float.Parse(txtGSVCare.Text) * 11.88;
-            z = float.Parse(txtGSVMaidNum.Text) * 420;
-            r = (x + y) / z;
-            txtGSVResult.Text = r.ToString();
+            if(txtGSVCheckOut.Text == "" || txtGSVCare.Text == "" || txtGSVCare.Text == "")
+                MessageBox.Show("Please fill all empty spaces.");
+            else
+            {
+                double x, y, z, r;
+                x = float.Parse(txtGSVCheckOut.Text) * 26.76;
+                y = float.Parse(txtGSVCare.Text) * 11.88;
+                z = float.Parse(txtGSVMaidNum.Text) * 420;
+                r = (x + y) / z;
+                txtGSVResult.Text = r.ToString();
+            }
         }
 
         private void btnGSVSave_Click(object sender, EventArgs e)
         {
-            dbconnection.insertCalculation("GSV", float.Parse(txtGSVResult.Text));
+            if(txtGSVResult.Text == "")
+                MessageBox.Show("Please calculate first.");
+            else
+                dbconnection.insertCalculation("GSV", float.Parse(txtGSVResult.Text));
         }
 
         private void btnGSVRef_Click(object sender, EventArgs e)
@@ -433,8 +441,8 @@ namespace MAID
             }
             chart1.ChartAreas[0].AxisX.LabelStyle.Angle = -45;
             chart1.Series["GSV"].BorderWidth = 2;
-            //chart1.ChartAreas[0].AxisX.Title = "DATE";
-            //chart1.ChartAreas[0].AxisY.Title = "VALUE";
+            chart1.ChartAreas[0].AxisX.Title = "DATE";
+            chart1.ChartAreas[0].AxisY.Title = "VALUE";
         }
 
         private void cbxEmployee_DropDown(object sender, EventArgs e)
@@ -449,26 +457,33 @@ namespace MAID
 
         private void btnBCVcalc_Click(object sender, EventArgs e)
         {
-            double x, y = 0, z, r;
-            int[] delay = new int[11] { 45, 45, 45, 15, 7, 11, 6, 10, 17, 20, 8 };
-
-            x = float.Parse(txtBCVbreak.Text) * 60;
-
-            for(int i=0; i < lbBCVdelay.SelectedIndices.Count; i++)
+            if(txtBCVbreak.Text == "" || cbxBCVemployee.Text == "" || txtBCVshift.Text == "")
+                MessageBox.Show("Please fill all empty spaces.");
+            else
             {
-                y += delay[lbBCVdelay.SelectedIndices[i]];
+                double x, y = 0, z, r;
+                int[] delay = new int[11] { 45, 45, 45, 15, 7, 11, 6, 10, 17, 20, 8 };
+
+                x = float.Parse(txtBCVbreak.Text) * 60;
+
+                for (int i = 0; i < lbBCVdelay.SelectedIndices.Count; i++)
+                    y += delay[lbBCVdelay.SelectedIndices[i]];
+
+                z = float.Parse(txtBCVshift.Text) * 60;
+                r = (420 - x - y) / z;
+                txtBCVresult.Text = r.ToString();
             }
-
-            z = float.Parse(txtBCVshift.Text) * 60;
-            r = (420 - x - y) / z;
-            txtBCVresult.Text = r.ToString();
-
         }
 
         private void btnBCVsave_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(cbxBCVemployee.SelectedItem.ToString().Split('-')[0]);
-            dbconnection.insertBCVCalc(id, float.Parse(txtBCVresult.Text));
+            if(txtBCVresult.Text == "")
+                MessageBox.Show("Please calculate first.");
+            else
+            {
+                int id = Convert.ToInt32(cbxBCVemployee.SelectedItem.ToString().Split('-')[0]);
+                dbconnection.insertBCVCalc(id, float.Parse(txtBCVresult.Text));
+            }
         }
 
         private void btnBCVshow_Click(object sender, EventArgs e)
@@ -484,30 +499,36 @@ namespace MAID
             }
             chart2.ChartAreas[0].AxisX.LabelStyle.Angle = -45;
             chart2.Series["GSV"].BorderWidth = 2;
-            //chart1.ChartAreas[0].AxisX.Title = "DATE";
-            //chart1.ChartAreas[0].AxisY.Title = "VALUE";
+            chart2.ChartAreas[0].AxisX.Title = "DATE";
+            chart2.ChartAreas[0].AxisY.Title = "VALUE";
         }
 
         private void btnIGVCalc_Click(object sender, EventArgs e)
         {
-            double x, y, z = 0, t;
-            int[] delay = new int[11] { 45, 45, 45, 15, 7, 11, 6, 10, 17, 20, 8 };
-
-            x = Convert.ToInt32(txtIGVCheckOut.Text) * 26.79;
-            y = Convert.ToInt32(txtIGVCare.Text) * 11.88;
-            t = Convert.ToInt32(txtIGVEmployee.Text);
-
-            for (int i = 0; i < lbIGVDelay.SelectedIndices.Count; i++)
+            if( txtIGVCare.Text == "" || txtIGVCheckOut.Text == "" || txtIGVEmployee.Text == "")
+                MessageBox.Show("Please fill all empty spaces.");
+            else
             {
-                z += delay[lbIGVDelay.SelectedIndices[i]];
-            }
+                double x, y, z = 0, t;
+                int[] delay = new int[11] { 45, 45, 45, 15, 7, 11, 6, 10, 17, 20, 8 };
 
-            txtIGVRes.Text = ((x + y) / (420 * t - 60 * t - z)).ToString();
+                x = Convert.ToInt32(txtIGVCheckOut.Text) * 26.79;
+                y = Convert.ToInt32(txtIGVCare.Text) * 11.88;
+                t = Convert.ToInt32(txtIGVEmployee.Text);
+
+                for (int i = 0; i < lbIGVDelay.SelectedIndices.Count; i++)
+                    z += delay[lbIGVDelay.SelectedIndices[i]];
+
+                txtIGVRes.Text = ((x + y) / (420 * t - 60 * t - z)).ToString();
+            }
         }
 
         private void btnIGVSave_Click(object sender, EventArgs e)
         {
-            dbconnection.insertCalculation("IGV", float.Parse(txtIGVRes.Text));
+            if(txtIGVRes.Text == "")
+                MessageBox.Show("Please calculate first.");
+            else
+                dbconnection.insertCalculation("IGV", float.Parse(txtIGVRes.Text));
         }
 
         private void btnIGVShow_Click(object sender, EventArgs e)
@@ -523,22 +544,29 @@ namespace MAID
             }
             chart3.ChartAreas[0].AxisX.LabelStyle.Angle = -45;
             chart3.Series["IGV"].BorderWidth = 2;
+            chart3.ChartAreas[0].AxisX.Title = "DATE";
+            chart3.ChartAreas[0].AxisY.Title = "VALUE";
         }
 
         private void btnEASOCalc_Click(object sender, EventArgs e)
         {
-            double x, y = 0, z, res;
-            int[] delay = new int[11] { 45, 45, 45, 15, 7, 11, 6, 10, 17, 20, 8 };
-            x = float.Parse(txtEASOEmployeeNum.Text) * 420;
-            z = float.Parse(txtEASOBreak.Text) * 60;
-
-            for (int i = 0; i < lbEASODelay.SelectedIndices.Count; i++)
+            if(txtEASOEmployeeNum.Text == "" || txtEASOBreak.Text == "")
+                MessageBox.Show("Please fill all empty spaces.");
+            else
             {
-                y += delay[lbEASODelay.SelectedIndices[i]];
-            }
+                double x, y = 0, z, res;
+                int[] delay = new int[11] { 45, 45, 45, 15, 7, 11, 6, 10, 17, 20, 8 };
+                x = float.Parse(txtEASOEmployeeNum.Text) * 420;
+                z = float.Parse(txtEASOBreak.Text) * 60;
 
-            res = (x - y - z) / x;
-            txtEASOResult.Text = res.ToString();
+                for (int i = 0; i < lbEASODelay.SelectedIndices.Count; i++)
+                {
+                    y += delay[lbEASODelay.SelectedIndices[i]];
+                }
+
+                res = (x - y - z) / x;
+                txtEASOResult.Text = res.ToString();
+            }
         }
 
         private void btnEASOShow_Click(object sender, EventArgs e)
@@ -554,32 +582,45 @@ namespace MAID
             }
             chart4.ChartAreas[0].AxisX.LabelStyle.Angle = -45;
             chart4.Series["EASO"].BorderWidth = 2;
+            chart4.ChartAreas[0].AxisX.Title = "DATE";
+            chart4.ChartAreas[0].AxisY.Title = "VALUE";
         }
 
         private void btnEASOSave_Click(object sender, EventArgs e)
         {
-            dbconnection.insertCalculation("EASO", float.Parse(txtEASOResult.Text));
+            if(txtEASOResult.Text == "")
+                MessageBox.Show("Please calculate first.");
+            else
+                dbconnection.insertCalculation("EASO", float.Parse(txtEASOResult.Text));
         }
 
         private void btnKKOCalc_Click(object sender, EventArgs e)
         {
-            double x, y = 0, z, res;
-            int[] delay = new int[11] { 45, 45, 45, 15, 7, 11, 6, 10, 17, 20, 8 };
-            x = float.Parse(txtKKOEmployeeNum.Text) * 420;
-            z = float.Parse(txtKKOBreak.Text) * 60;
-
-            for (int i = 0; i < lbKKODelay.SelectedIndices.Count; i++)
+            if(txtKKOBreak.Text == "" || txtKKOEmployeeNum.Text == "")
+                MessageBox.Show("Please fill all empty spaces.");
+            else
             {
-                y += delay[lbKKODelay.SelectedIndices[i]];
-            }
+                double x, y = 0, z, res;
+                int[] delay = new int[11] { 45, 45, 45, 15, 7, 11, 6, 10, 17, 20, 8 };
+                x = float.Parse(txtKKOEmployeeNum.Text) * 420;
+                z = float.Parse(txtKKOBreak.Text) * 60;
 
-            res = (x - y - z) / x;
-            txtKKOResult.Text = res.ToString();
+                for (int i = 0; i < lbKKODelay.SelectedIndices.Count; i++)
+                {
+                    y += delay[lbKKODelay.SelectedIndices[i]];
+                }
+
+                res = (x - y - z) / x;
+                txtKKOResult.Text = res.ToString();
+            }
         }
 
         private void btnKKOSave_Click(object sender, EventArgs e)
         {
-            dbconnection.insertCalculation("KKO", float.Parse(txtKKOResult.Text));
+            if(txtKKOResult.Text == "")
+                MessageBox.Show("Please calculate first.");
+            else
+                dbconnection.insertCalculation("KKO", float.Parse(txtKKOResult.Text));
         }
 
         private void btnKKOShow_Click(object sender, EventArgs e)
@@ -595,6 +636,8 @@ namespace MAID
             }
             chart5.ChartAreas[0].AxisX.LabelStyle.Angle = -45;
             chart5.Series["KKO"].BorderWidth = 2;
+            chart5.ChartAreas[0].AxisX.Title = "DATE";
+            chart5.ChartAreas[0].AxisY.Title = "VALUE";
         }
         private void btnSumShow_Click(object sender, EventArgs e)
         {

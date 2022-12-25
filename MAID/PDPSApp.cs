@@ -32,6 +32,7 @@ namespace MAID
         }
         private void initCalcPages(object sender, EventArgs e)
         {
+
             chart1.ChartAreas[0].BackColor = Color.GhostWhite;
             chart2.ChartAreas[0].BackColor = Color.GhostWhite;
             chart3.ChartAreas[0].BackColor = Color.GhostWhite;
@@ -57,6 +58,39 @@ namespace MAID
             btnEASOShow_Click(sender, e);
             btnKKOShow_Click(sender, e);
             btnSumShow_Click(sender, e);
+
+            txtOutput.Clear();
+            txtOutput.AppendText("\\|/                                          \\|/                 🟄");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("                      ( _ _ )                                 / \\");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("    ``\\ - - - - - - ( o o )                               / i \\ \\");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("       | |              ( _ _ )                              o / \\ \\");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("       | | w - - | |                 \\|/                    / / / \\ i \\");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("                                                            / / * / o \\ \\");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("   \\|/                                   \\|/                     |   |");
+        }
+        private void cowHeadBang()
+        {
+            txtOutput.Clear();
+            txtOutput.AppendText("\\|/                                          \\|/                 🟄");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("                        ( _ _ )                               / \\");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("    ``\\ - - - - - -   ( o o )                             / i \\ \\");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("       | |                ( _ _ )                            o / \\ \\");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("       | | w - - | |                 \\|/                    / / / \\ i \\");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("                                                            / / * / o \\ \\");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("   \\|/                                   \\|/                     |   |");
+
         }
          
       

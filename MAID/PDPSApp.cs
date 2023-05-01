@@ -27,6 +27,8 @@ namespace MAID
 
         private void PDPSApp_Load(object sender, EventArgs e)
         {
+            //dbconnection.clearDB();
+            cowification();
             mainTabControl_SelectedIndexChanged(sender, e);
             initCalcPages(sender, e);
         }
@@ -58,8 +60,40 @@ namespace MAID
             btnKKOShow_Click(sender, e);
             btnSumShow_Click(sender, e);
         }
-         
-      
+        private void cowification()
+        {
+            txtOutput.Clear();
+            txtOutput.AppendText("\\|/                                          \\|/");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("                        ( _ _ )                                  /🟄\\                \\|/");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("      ``\\ - - - - - - ( o o )                               (  \\i \\ )");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("         | |              ( _ _ )                            ( / * / o \\ )                       \\|/");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("         | | w - - | |                    \\|/                  ( / / \\ i )                 \\|/");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("                                \\|/                    \\|/           |   |");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("   \\|/                                    \\|/                        |   |       \\|/                      \\|/");
+        }
+        private void cowHeadBang()
+        {
+            txtOutput.Clear();
+            txtOutput.AppendText("\\|/                                          \\|/");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("                          ( _ _ )                                /🟄\\                \\|/");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("      ``\\ - - - - - -   ( o o )                             (  \\i \\ )");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("         | |                ( _ _ )                          ( / * / o \\ )                       \\|/");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("         | | w - - | |                    \\|/                  ( / / \\ i )                 \\|/");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("                                \\|/                    \\|/           |   |");
+            txtOutput.AppendText(Environment.NewLine);
+            txtOutput.AppendText("   \\|/                                    \\|/                        |   |       \\|/                      \\|/");
+        }
         private void btnListMaids_Click(object sender, EventArgs e)
         {
             List<Maid> maidList = dbconnection.selectMaidList(true);
@@ -108,7 +142,7 @@ namespace MAID
             }
             cbxRoom.Enabled = true;
         }
-        //adsfassfadasfasf
+
         private void btnListCln_Click(object sender, EventArgs e)
         {
             List<Cleaning> cleanings = dbconnection.selectCleaningList(true);
@@ -176,7 +210,7 @@ namespace MAID
             else
                 MessageBox.Show("Please select maid", "Error");
         }
-        //buraya da
+
         private void btnListHistory_Click(object sender, EventArgs e)
         {
             List<Cleaning> cleanings = dbconnection.selectCleaningList(false);
@@ -184,7 +218,7 @@ namespace MAID
             for (int i = 0; i < cleanings.Count(); i++)
             {
                 string[] row = { cleanings[i].Maid.Id.ToString(), cleanings[i].Maid.Name, cleanings[i].Maid.Surname,
-                cleanings[i].Type.ToString(), cleanings[i].RoomNumber[0].ToString(), cleanings[i].RoomNumber, cleanings[i].Date, cleanings[i].Rating.ToString(), cleanings[i].CId.ToString()};
+                cleanings[i].Type.ToString(), cleanings[i].RoomNumber[0].ToString(), cleanings[i].RoomNumber, cleanings[i].Date, cleanings[i].Rating.ToString()};
                 var satir = new ListViewItem(row);
                 lwCleaningHistory.Items.Add(satir);
             }
@@ -197,7 +231,7 @@ namespace MAID
             for (int i = 0; i < maidList.Count(); i++)
             {
                 string[] row = { maidList[i].Id.ToString(), maidList[i].Name, maidList[i].Surname,
-                    maidList[i].Rating.ToString(), maidList[i].RoomsCleaned.ToString(), maidList[i].Salary.ToString() };
+                    maidList[i].Rating.ToString(), maidList[i].RoomsCleaned.ToString() };
                 var satir = new ListViewItem(row);
                 lwMaidHistory.Items.Add(satir);
             }
@@ -335,7 +369,17 @@ namespace MAID
         {
             ToExcel(lwCleaning);
         }
-      
+
+        private void btnCowDisco_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                cowHeadBang();
+                System.Threading.Thread.Sleep(200);
+                cowification();
+                System.Threading.Thread.Sleep(200);
+            }
+        }
 
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
         {
@@ -444,7 +488,7 @@ namespace MAID
             {
                 int id = Convert.ToInt32(cbxBCVemployee.SelectedItem.ToString().Split('-')[0]);
                 dbconnection.insertBCVCalc(id, float.Parse(txtBCVresult.Text));
-                MessageBox.Show("Saved.", "Save", MessageBoxButtons.OK);
+                 MessageBox.Show("Saved.", "Save", MessageBoxButtons.OK);
             }
         }
 
